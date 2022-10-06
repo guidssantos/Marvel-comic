@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { FaTimes } from 'react-icons/fa';
 import backgroundMenu from '../../assets/backgroud-menu/fundo-menu.jpg';
+import { SearchButton, Search } from '../Menu/styles';
 
 export const SidebarContainer = styled.aside`
   position: fixed;
@@ -36,14 +37,31 @@ export const SidebarWrapper = styled.div`
 `;
 
 export const SidebarMenu = styled.ul`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(6, 80px);
-  text-align: center;
+  ${({ theme }) => css`
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 80px);
+    text-align: center;
+    align-items: center;
 
-  @media screen and (max-width: 480px) {
-    grid-template-rows: repeat(6, 60px);
-  }
+    ${SearchButton} {
+      background-color: transparent;
+      svg {
+        position: relative;
+        right: 2rem;
+        top: 2px;
+      }
+    }
+
+    @media ${theme.media.lteSmall} {
+      grid-template-rows: repeat(6, 60px);
+      ${Search} {
+        & {
+          width: 200px;
+        }
+      }
+    }
+  `}
 `;
 
 export const SidebarLink = styled.a`

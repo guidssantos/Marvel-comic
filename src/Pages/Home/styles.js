@@ -1,5 +1,50 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.header`
-  ${({ theme }) => css``}
+  ${({ theme }) => css`
+    background: black;
+  `}
+`;
+
+export const HeadingComic = styled.h1`
+  ${({ theme }) => css`
+    margin-bottom: 20px;
+  `}
+`;
+
+export const ContainerComic = styled.article`
+  ${({ theme }) => css`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  `}
+`;
+
+export const BackgroundComic = styled.div`
+  ${({ theme }) => css`
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    width: 200px;
+    box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 1);
+
+    @media (max-width: 460px) {
+      width: 100%;
+    }
+  `}
+`;
+
+export const ImgComic = styled.img`
+  ${({ theme }) => css`
+    width: 100%;
+    border-radius: 10px;
+  `}
+`;
+
+export const TextComic = styled.p`
+  ${({ theme }) => css`
+    color: black;
+    text-align: center;
+    padding: 0 5px;
+  `}
 `;

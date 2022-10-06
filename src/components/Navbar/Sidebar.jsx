@@ -13,7 +13,7 @@ import * as Styled from './styles';
 
 export function Sidebar({ isOpen, toggle }) {
   return (
-    <Styled.SidebarContainer isOpen={isOpen} onClick={toggle}>
+    <Styled.SidebarContainer isOpen={isOpen}>
       <Styled.Icon onClick={toggle}>
         <Styled.CloseIcon />
       </Styled.Icon>
@@ -27,15 +27,15 @@ export function Sidebar({ isOpen, toggle }) {
           </Styled.SidebarLink>
           <SearchWrapper>
             <Search type='search' />
-            <SearchButton type='submit'>
+            <SearchButton type='submit' onClick={toggle}>
               <FaSearch />
             </SearchButton>
           </SearchWrapper>
-          <OneMenu>
+          <OneMenu onClick={toggle}>
             <Cart />
           </OneMenu>
-          <OneMenu>
-            <Link>Login</Link>
+          <OneMenu onClick={toggle}>
+            <Link href='/'>Login</Link>
           </OneMenu>
         </Styled.SidebarMenu>
       </Styled.SidebarWrapper>
