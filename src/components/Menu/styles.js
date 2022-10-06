@@ -7,13 +7,16 @@ export const HeaderBackground = styled.header`
 
 export const HeaderContainer = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
   max-width: 120rem;
   margin: 0 auto;
+  height: 80px;
 `;
 
 export const LogoWrapper = styled.a`
   ${({ theme }) => css`
+    margin-left: 10px;
     img {
       width: 100px;
     }
@@ -37,6 +40,7 @@ export const MobileIcon = styled.div`
 
 export const HeaderMenu = styled.div`
   display: inline-flex;
+  align-items: center;
 
   a {
     margin-right: 1em;
@@ -77,6 +81,34 @@ export const Link = styled.a`
   `}
 `;
 
-export const SearchWrapper = styled.div`
-  ${({ theme }) => css``}
+export const SearchWrapper = styled.form`
+  ${({ theme }) => css`
+    position: relative;
+  `}
+`;
+
+export const Search = styled.input`
+  height: 30px;
+  width: 300px;
+  border-radius: 5px;
+  padding: 10px;
+  border: 0;
+
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const SearchButton = styled.button`
+  svg {
+    color: black;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+  }
 `;

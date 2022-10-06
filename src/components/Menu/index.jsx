@@ -1,4 +1,4 @@
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaSearch } from 'react-icons/fa';
 import P from 'prop-types';
 import * as Styled from './styles';
 import logo from '../../assets/logo/marvel-comics-logo.png';
@@ -15,8 +15,10 @@ export function Menu({ toggle }) {
         </Styled.MobileIcon>
         <Styled.HeaderMenu>
           <Styled.SearchWrapper>
-            <input type='search' />
-            <input type='submit' />
+            <Styled.Search type='search' />
+            <Styled.SearchButton type='submit'>
+              <FaSearch />
+            </Styled.SearchButton>
           </Styled.SearchWrapper>
           <Styled.OneMenu>
             <Styled.Cart />
