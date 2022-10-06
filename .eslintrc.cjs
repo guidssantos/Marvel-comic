@@ -14,7 +14,7 @@ module.exports = {
   overrides: [],
   parser: 'babel-eslint',
   parserOptions: {
-    ecmaVersion: 'latest',
+    ecmaVersion: '6',
     sourceType: 'module',
   },
   plugins: ['react'],
