@@ -6,19 +6,25 @@ export const HeaderBackground = styled.header`
 `;
 
 export const HeaderContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 120rem;
-  margin: 0 auto;
-  height: 80px;
+  ${({ theme }) => css`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 120rem;
+    margin: 0 auto;
+    height: 80px;
+
+    @media ${theme.media.lteMedium} {
+      justify-content: center;
+    }
+  `}
 `;
 
 export const LogoWrapper = styled.a`
   ${({ theme }) => css`
     margin-left: 10px;
     img {
-      width: 100px;
+      width: 150px;
     }
   `}
 `;
@@ -29,7 +35,7 @@ export const MobileIcon = styled.div`
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
-    top: 0;
+    top: 15px;
     right: 0;
     transform: translate(-100%, 75%);
     font-size: 1.8rem;

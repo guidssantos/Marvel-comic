@@ -11,10 +11,10 @@ export function Sidebar({ isOpen, toggle }) {
       <Styled.SidebarWrapper>
         <Styled.SidebarMenu>
           <Styled.SidebarLink onClick={toggle} href='#'>
-            Historias em quadrinhos
+            Home
           </Styled.SidebarLink>
           <Styled.SidebarLink onClick={toggle} href='#'>
-            Historias em quadrinhos
+            Ver todas as HQ
           </Styled.SidebarLink>
         </Styled.SidebarMenu>
       </Styled.SidebarWrapper>

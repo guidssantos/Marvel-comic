@@ -1,12 +1,15 @@
 import styled, { css } from 'styled-components';
 import { FaTimes } from 'react-icons/fa';
+import backgroundMenu from '../../assets/backgroud-menu/fundo-menu.jpg';
 
 export const SidebarContainer = styled.aside`
   position: fixed;
   z-index: 99;
   width: 100%;
   height: 100%;
-  background: black;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url(${backgroundMenu});
+  background-size: cover;
   display: grid;
   align-items: center;
   left: 0;
@@ -48,7 +51,7 @@ export const SidebarLink = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
     transition: 0.2s ease-in-out;
     color: #fff;
     cursor: pointer;
