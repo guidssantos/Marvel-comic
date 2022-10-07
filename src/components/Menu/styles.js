@@ -20,7 +20,7 @@ export const HeaderContainer = styled.div`
   `}
 `;
 
-export const LogoWrapper = styled.a`
+export const LogoWrapper = styled.div`
   ${({ theme }) => css`
     margin-left: 10px;
     img {

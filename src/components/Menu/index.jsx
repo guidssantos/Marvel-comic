@@ -9,7 +9,9 @@ export function Menu({ toggle }) {
     <Styled.HeaderBackground>
       <Styled.HeaderContainer>
         <Styled.LogoWrapper>
-          <img src={logo} alt='Marvel' />
+          <Link to='/'>
+            <img src={logo} alt='Marvel' />
+          </Link>
         </Styled.LogoWrapper>
         <Styled.MobileIcon onClick={toggle}>
           <FaBars />
