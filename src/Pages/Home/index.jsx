@@ -84,6 +84,11 @@ export function Home() {
           </Styled.BackgroundComic>
         </Styled.ContainerComic>
       </SectionContainer>
+      <Styled.Footer>
+        <Styled.Copyright>
+          Marvel Comics - Todos os direitos reservados
+        </Styled.Copyright>
+      </Styled.Footer>
     </Styled.Container>
   );
 }

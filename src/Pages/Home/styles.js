@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.header`
   ${({ theme }) => css`
-    background: black;
+    background: white;
   `}
 `;
 
@@ -20,13 +20,14 @@ export const ContainerComic = styled.article`
   `}
 `;
 
-export const BackgroundComic = styled.div`
+export const BackgroundComic = styled.a`
   ${({ theme }) => css`
-    background-color: white;
+    background-color: black;
     border-radius: 10px;
     margin-bottom: 30px;
     width: 200px;
-    box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 1);
+    cursor: pointer;
 
     @media (max-width: 460px) {
       width: 100%;
@@ -43,8 +44,21 @@ export const ImgComic = styled.img`
 
 export const TextComic = styled.p`
   ${({ theme }) => css`
-    color: black;
+    color: white;
     text-align: center;
     padding: 0 5px;
   `}
+`;
+
+export const Footer = styled.footer`
+  ${({ theme }) => css`
+    background-color: black;
+  `}
+`;
+
+export const Copyright = styled.p`
+  color: white;
+  text-align: center;
+  padding: 2.4rem 0;
+  margin: 0;
 `;
