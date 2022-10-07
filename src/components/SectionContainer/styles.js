@@ -5,6 +5,5 @@ export const Container = styled.article`
     max-width: 120rem;
     margin: 0 auto;
     padding: ${theme.spacings.large};
-    color: yellow;
   `}
 `;

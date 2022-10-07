@@ -49,16 +49,3 @@ export const TextComic = styled.p`
     padding: 0 5px;
   `}
 `;
-
-export const Footer = styled.footer`
-  ${({ theme }) => css`
-    background-color: black;
-  `}
-`;
-
-export const Copyright = styled.p`
-  color: white;
-  text-align: center;
-  padding: 2.4rem 0;
-  margin: 0;
-`;

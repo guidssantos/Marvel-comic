@@ -25,6 +25,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   p {
+    color: ${({ theme }) => theme.colors.white};
     margin: ${({ theme }) => theme.spacings.medium} 0;
   }
 

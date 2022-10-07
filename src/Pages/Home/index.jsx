@@ -4,6 +4,7 @@ import { SectionBackground } from '../../components/SectionBackground';
 import { SectionContainer } from '../../components/SectionContainer';
 import hq from '../../assets/hqs/hq.jpg';
 import * as Styled from './styles';
+import { Footer } from '../../components/Footer';
 
 export function Home() {
   return (
@@ -84,11 +85,7 @@ export function Home() {
           </Styled.BackgroundComic>
         </Styled.ContainerComic>
       </SectionContainer>
-      <Styled.Footer>
-        <Styled.Copyright>
-          Marvel Comics - Todos os direitos reservados
-        </Styled.Copyright>
-      </Styled.Footer>
+      <Footer />
     </Styled.Container>
   );
 }
