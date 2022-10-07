@@ -1,4 +1,5 @@
 import P from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { SectionContainer } from '../../components/SectionContainer';
 import hq from '../../assets/hqs/hq.jpg';
@@ -13,7 +14,9 @@ export function IndividualComic() {
     <Styled.Container>
       <Navbar />
       <SectionContainer>
-        <Styled.ReturnHome>Voltar para a Home</Styled.ReturnHome>
+        <Styled.ReturnHome>
+          <Link to='/'>Voltar para a Home</Link>
+        </Styled.ReturnHome>
         <Styled.OneComicWrapper>
           <ImgComic src={hq} alt='imagem_hq' />
           <Styled.TextWrapper>

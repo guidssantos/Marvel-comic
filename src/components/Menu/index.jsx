@@ -1,5 +1,6 @@
 import { FaBars, FaSearch } from 'react-icons/fa';
 import P from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as Styled from './styles';
 import logo from '../../assets/logo/marvel-comics-logo.png';
 
@@ -21,7 +22,9 @@ export function Menu({ toggle }) {
             </Styled.SearchButton>
           </Styled.SearchWrapper>
           <Styled.OneMenu>
-            <Styled.Cart />
+            <Link to='/cart'>
+              <Styled.Cart />
+            </Link>
           </Styled.OneMenu>
           <Styled.OneMenu>
             <Styled.Link>Login</Styled.Link>

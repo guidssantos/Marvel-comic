@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Heading } from '../../components/Heading';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { SectionBackground } from '../../components/SectionBackground';
@@ -78,10 +79,12 @@ export function Home() {
             </Styled.TextComic>
           </Styled.BackgroundComic>
           <Styled.BackgroundComic>
-            <Styled.ImgComic src={hq} />
-            <Styled.TextComic>
-              Avengers: Earth&apos;s Mightiest Heroes (2004) #1
-            </Styled.TextComic>
+            <Link to='/comic'>
+              <Styled.ImgComic src={hq} />
+              <Styled.TextComic>
+                Avengers: Earth&apos;s Mightiest Heroes (2004) #1
+              </Styled.TextComic>
+            </Link>
           </Styled.BackgroundComic>
         </Styled.ContainerComic>
       </SectionContainer>

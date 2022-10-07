@@ -20,7 +20,7 @@ export const ContainerComic = styled.article`
   `}
 `;
 
-export const BackgroundComic = styled.a`
+export const BackgroundComic = styled.div`
   ${({ theme }) => css`
     background-color: black;
     border-radius: 10px;

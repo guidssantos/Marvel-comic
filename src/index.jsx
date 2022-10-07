@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from 'styled-components';
+import { BrowserRouter } from 'react-router-dom';
 import { theme } from './styles/theme';
 import { GlobalStyles } from './styles/global-styles';
-import { Home } from './Pages/Home';
-import { IndividualComic } from './Pages/IndividualComic';
+import { AllRoutes } from './Routes';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <IndividualComic />
+      <BrowserRouter>
+        <AllRoutes />
+      </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>
 );
