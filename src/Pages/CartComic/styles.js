@@ -17,52 +17,76 @@ export const Container = styled.section`
       margin-bottom: 4rem;
       color: ${theme.colors.primary};
     }
+    @media ${theme.media.lteSmall} {
+      h1 {
+        font-size: 3rem;
+        text-align: center;
+      }
+    }
   `}
 `;
 
-export const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
+export const Wrapper = styled.article`
+  ${({ theme }) => css``}
 `;
 
-export const CartWrapper = styled.form`
+export const CartWrapper = styled.div`
   ${({ theme }) => css`
-    width: 100%;
-  `}
-`;
-
-export const CartTable = styled.table`
-  ${({ theme }) => css`
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
     text-align: center;
+    justify-content: space-around;
+
+    @media ${theme.media.lteSmall} {
+      flex-direction: column;
+      align-items: center;
+    }
   `}
 `;
 
-export const CartThead = styled.thead`
-  ${({ theme }) => css``}
+export const ProductWrapper = styled.div`
+  ${({ theme }) => css`
+    width: 70px;
+
+    p {
+      color: black;
+    }
+
+    @media ${theme.media.lteSmall} {
+      padding-bottom: 15px;
+      width: 80%;
+    }
+  `}
 `;
 
-export const CartTr = styled.tr`
-  ${({ theme }) => css``}
-`;
-
-export const CartTitle = styled.th`
+export const ProductTitle = styled.p`
   ${({ theme }) => css`
     padding-bottom: 20px;
+    font-size: 18px;
+    margin: 0;
+    font-weight: bold;
+
+    @media ${theme.media.lteSmall} {
+      padding-bottom: 5px;
+    }
   `}
 `;
 
-export const CartTbody = styled.tbody`
-  ${({ theme }) => css``}
-`;
-
-export const ProductCart = styled.td`
+export const OtherTitle = styled.p`
   ${({ theme }) => css`
-    min-width: 60px;
-    max-width: 120px;
-    width: 120px;
-    text-align: center;
+    padding-bottom: 6rem;
+    font-size: 18px;
+    margin: 0;
+    font-weight: bold;
+
+    @media ${theme.media.lteSmall} {
+      padding-bottom: 5px;
+    }
   `}
+`;
+
+export const CartTbody = styled.div`
+  ${({ theme }) => css``}
 `;
 
 export const CartImg = styled.img`
@@ -75,25 +99,36 @@ export const ProductName = styled.a`
   `}
 `;
 
-export const ProductPrice = styled.td``;
-
-export const ProductAmount = styled.td``;
-
-export const ProductTotal = styled.td``;
-
-export const CartCheckout = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+export const ProductValue = styled.p`
+  ${({ theme }) => css`
+    margin: 0;
+  `}
 `;
 
-export const CuponWrapper = styled.form`
-  margin-bottom: 2rem;
+export const CartCheckout = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    @media ${theme.media.lteSmall} {
+      align-items: center;
+    }
+  `}
+`;
+
+export const CuponWrapper = styled.div`
+  margin: 2rem 0;
 `;
 
 export const CuponTitle = styled.p`
-  color: black;
-  padding: 0;
+  ${({ theme }) => css`
+    color: black;
+    font-weight: bold;
+    margin: 0;
+
+    @media ${theme.media.lteSmall} {
+      text-align: center;
+    }
+  `}
 `;
 
 export const CuponInput = styled.input``;
@@ -103,7 +138,7 @@ export const Purchase = styled.div``;
 export const PurchaseButton = styled.button`
   cursor: pointer;
   color: white;
-  background-color: black;
-  padding: 5px;
+  background-color: #383838;
+  padding: 10px;
   border-radius: 5px;
 `;

@@ -13,29 +13,25 @@ export function CartComic() {
         <Heading>Carrinho de Compras</Heading>
         <Styled.Wrapper>
           <Styled.CartWrapper>
-            <Styled.CartTable>
-              <Styled.CartThead>
-                <Styled.CartTr>
-                  <Styled.CartTitle>PRODUTO</Styled.CartTitle>
-                  <Styled.CartTitle>PREÇO</Styled.CartTitle>
-                  <Styled.CartTitle>QUANTIDADE</Styled.CartTitle>
-                  <Styled.CartTitle>TOTAL</Styled.CartTitle>
-                </Styled.CartTr>
-              </Styled.CartThead>
-              <Styled.CartTbody>
-                <Styled.CartTr>
-                  <Styled.ProductCart>
-                    <Styled.CartImg src={hq} />
-                    <Styled.ProductName>
-                      Avengers: Earth&apos;s Mightiest Heroes (2004) #1
-                    </Styled.ProductName>
-                  </Styled.ProductCart>
-                  <Styled.ProductPrice>R$: 9,99</Styled.ProductPrice>
-                  <Styled.ProductAmount>200</Styled.ProductAmount>
-                  <Styled.ProductTotal>R$: 1.998</Styled.ProductTotal>
-                </Styled.CartTr>
-              </Styled.CartTbody>
-            </Styled.CartTable>
+            <Styled.ProductWrapper>
+              <Styled.ProductTitle>PRODUTO</Styled.ProductTitle>
+              <Styled.CartImg src={hq} />
+              <Styled.ProductName>
+                Avengers: Earth&apos;s Mightiest Heroes (2004) #1
+              </Styled.ProductName>
+            </Styled.ProductWrapper>
+            <Styled.ProductWrapper>
+              <Styled.OtherTitle>PREÇO</Styled.OtherTitle>
+              <Styled.ProductValue>R$: 100</Styled.ProductValue>
+            </Styled.ProductWrapper>
+            <Styled.ProductWrapper>
+              <Styled.OtherTitle>QUANTIDADE</Styled.OtherTitle>
+              <Styled.ProductValue>2</Styled.ProductValue>
+            </Styled.ProductWrapper>
+            <Styled.ProductWrapper>
+              <Styled.OtherTitle>TOTAL</Styled.OtherTitle>
+              <Styled.ProductValue>R$: 200</Styled.ProductValue>
+            </Styled.ProductWrapper>
           </Styled.CartWrapper>
           <Styled.CartCheckout>
             <Styled.CuponWrapper>
