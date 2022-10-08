@@ -27,7 +27,11 @@ export const Container = styled.section`
 `;
 
 export const Wrapper = styled.article`
-  ${({ theme }) => css``}
+  ${({ theme }) => css`
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+  `}
 `;
 
 export const CartWrapper = styled.div`

@@ -38,6 +38,7 @@ export const BackgroundComic = styled.div`
 export const ImgComic = styled.img`
   ${({ theme }) => css`
     width: 100%;
+    height: 300px;
     border-radius: 10px;
   `}
 `;

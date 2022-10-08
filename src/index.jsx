@@ -7,12 +7,10 @@ import { GlobalStyles } from './styles/global-styles';
 import { AllRoutes } from './Routes';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <BrowserRouter>
-        <AllRoutes />
-      </BrowserRouter>
-    </ThemeProvider>
-  </React.StrictMode>
+  <ThemeProvider theme={theme}>
+    <GlobalStyles />
+    <BrowserRouter>
+      <AllRoutes />
+    </BrowserRouter>
+  </ThemeProvider>
 );
