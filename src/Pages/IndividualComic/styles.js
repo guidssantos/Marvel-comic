@@ -22,7 +22,8 @@ export const OneComicWrapper = styled.div`
     margin-top: ${theme.spacings.large};
 
     ${ImgComic} {
-      width: 400px;
+      width: 33%;
+      height: 550px;
     }
 
     @media (max-width: 990px) {
@@ -41,6 +42,7 @@ export const OneComicWrapper = styled.div`
 
 export const TextWrapper = styled.div`
   ${({ theme }) => css`
+    width: 400px;
     margin-left: ${theme.spacings.xhuge};
     h1 {
       font-size: ${theme.font.sizes.medium};

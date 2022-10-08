@@ -1,5 +1,6 @@
 import P from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { SectionContainer } from '../../components/SectionContainer';
 import hq from '../../assets/hqs/hq.jpg';
@@ -8,8 +9,21 @@ import { ImgComic } from '../Home/styles';
 import * as Styled from './styles';
 import { Footer } from '../../components/Footer';
 import { Cart } from '../../components/Menu/styles';
+import api from '../../services/api';
 
 export function IndividualComic() {
+  const [comics, setComics] = useState([]);
+
+  useEffect(() => {
+    api
+      .get(`/comics/2`)
+      .then((response) => {
+        setComics(response.data.data.results);
+        console.log(comics);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <Styled.Container>
       <Navbar />
@@ -17,34 +31,31 @@ export function IndividualComic() {
         <Styled.ReturnHome>
           <Link to='/'>Voltar para a Home</Link>
         </Styled.ReturnHome>
-        <Styled.OneComicWrapper>
-          <ImgComic src={hq} alt='imagem_hq' />
-          <Styled.TextWrapper>
-            <Heading>Avengers: Earth&apos;s Mightiest Heroes (2004) #1</Heading>
-            <Styled.DescriptionComic>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              in tempus neque, vel laoreet dui. Sed dictum, tortor eget
-              elementum finibus, elit erat ornare lorem, nec scelerisque elit
-              dolor vitae augue. Suspendisse finibus justo at vehicula varius.
-              Aliquam sed ex at purus suscipit sagittis. Sed nec justo quis
-              dolor maximus vulputate. Duis dui libero, dapibus non arcu eget,
-              bibendum vestibulum ipsum. In rutrum id mauris vitae dictum. In
-              lectus ipsum, tempor sit amet ultrices vitae, consectetur eu quam.
-              Nam sagittis porttitor est, ut dictum est mattis nec. Pellentesque
-              mollis auctor ex ac mattis. Phasellus blandit felis sit amet
-              molestie auctor.
-            </Styled.DescriptionComic>
-            <Styled.PriceWrapper>
-              <Styled.PriceComic>$: 2,99</Styled.PriceComic>
-              <Styled.AddCart>
-                <Cart />
-                Adicionar ao Carrinho
-              </Styled.AddCart>
-            </Styled.PriceWrapper>
-          </Styled.TextWrapper>
-        </Styled.OneComicWrapper>
+        {comics.map((comics) => (
+          <Styled.OneComicWrapper key={comics.id}>
+            <ImgComic
+              src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
+              alt='imagem_hq'
+            />
+            <Styled.TextWrapper>
+              <Heading>{comics.title}</Heading>
+              <Styled.DescriptionComic>
+                {comics.description}
+              </Styled.DescriptionComic>
+              <Styled.PriceWrapper>
+                <Styled.PriceComic>
+                  $ {comics.prices[0].price ? comics.prices[0].price : 7.99}
+                </Styled.PriceComic>
+                <Styled.AddCart>
+                  <Cart />
+                  Adicionar ao Carrinho
+                </Styled.AddCart>
+              </Styled.PriceWrapper>
+            </Styled.TextWrapper>
+          </Styled.OneComicWrapper>
+        ))}
       </SectionContainer>
-      <Footer />
+      {/* <Footer /> */}
     </Styled.Container>
   );
 }
