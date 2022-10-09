@@ -57,7 +57,7 @@ export const HeaderMenu = styled.div`
   }
 `;
 
-export const OneMenu = styled.li`
+export const OneMenu = styled.div`
   ${({ theme }) => css`
     transition: all ease-in-out 300ms;
 
@@ -73,7 +73,7 @@ export const OneMenu = styled.li`
 
 export const Cart = styled(FaShoppingCart)`
   cursor: pointer;
-  width: 100px;
+  width: 50px;
   color: #fff;
 `;
 

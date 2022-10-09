@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Heading } from '../../components/Heading';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { SectionBackground } from '../../components/SectionBackground';
@@ -14,7 +15,7 @@ export function AllComics() {
 
   useEffect(() => {
     api
-      .get(`/comics`)
+      .get(`/comics?limit=15`)
       .then((response) => {
         setComics(response.data.data.results);
         setIsLoading(false);
@@ -51,10 +52,12 @@ export function AllComics() {
         <Styled.ContainerComic>
           {comics.map((comics) => (
             <Styled.BackgroundComic key={comics.id}>
-              <Styled.ImgComic
-                src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
-              />
-              <Styled.TextComic>{comics.title}</Styled.TextComic>
+              <Link key={comics.id} to={`/comic/${comics.id}`}>
+                <Styled.ImgComic
+                  src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
+                />
+                <Styled.TextComic>{comics.title}</Styled.TextComic>
+              </Link>
             </Styled.BackgroundComic>
           ))}
         </Styled.ContainerComic>

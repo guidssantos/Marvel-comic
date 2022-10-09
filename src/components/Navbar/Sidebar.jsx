@@ -1,6 +1,7 @@
 import P from 'prop-types';
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 import {
   Cart,
   Link,
@@ -12,6 +13,8 @@ import {
 import * as Styled from './styles';
 
 export function Sidebar({ isOpen, toggle }) {
+  const cartSize = useSelector((state) => state.cart.length);
+
   return (
     <Styled.SidebarContainer isOpen={isOpen}>
       <Styled.Icon onClick={toggle}>
@@ -31,11 +34,11 @@ export function Sidebar({ isOpen, toggle }) {
               <FaSearch />
             </SearchButton>
           </SearchWrapper>
-          <OneMenu onClick={toggle}>
-            <Cart />
-          </OneMenu>
-          <OneMenu onClick={toggle}>
-            <Link href='/'>Login</Link>
+          <OneMenu>
+            <Link to='/cart'>
+              <Cart />
+              <strong>{cartSize}</strong>
+            </Link>
           </OneMenu>
         </Styled.SidebarMenu>
       </Styled.SidebarWrapper>

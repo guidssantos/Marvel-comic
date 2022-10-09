@@ -3,13 +3,13 @@ import { Container as SectionContainer } from '../../components/SectionContainer
 
 export const Container = styled.section`
   ${({ theme }) => css`
-    background-color: white;
+    background-color: #eeeef3;
 
     ${SectionContainer} {
       min-height: 85vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
+      align-items: center;
     }
 
     h1 {
@@ -29,8 +29,11 @@ export const Container = styled.section`
 export const Wrapper = styled.article`
   ${({ theme }) => css`
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+    border-radius: 10px;
+
     padding: 20px;
+    width: 80%;
+    background-color: white;
   `}
 `;
 
@@ -39,7 +42,12 @@ export const CartWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     text-align: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    margin-top: 30px;
+
+    &:first-child {
+      margin-top: 0;
+    }
 
     @media ${theme.media.lteSmall} {
       flex-direction: column;
@@ -89,10 +97,6 @@ export const OtherTitle = styled.p`
   `}
 `;
 
-export const CartTbody = styled.div`
-  ${({ theme }) => css``}
-`;
-
 export const CartImg = styled.img`
   width: 70px;
   height: 100px;
@@ -110,10 +114,17 @@ export const ProductValue = styled.p`
   `}
 `;
 
+export const ButtonPlusMinus = styled.button`
+  background-color: white;
+  width: 20px;
+  cursor: pointer;
+`;
+
 export const CartCheckout = styled.div`
   ${({ theme }) => css`
     display: flex;
     flex-direction: column;
+    margin: 1rem 10rem;
     @media ${theme.media.lteSmall} {
       align-items: center;
     }

@@ -8,7 +8,8 @@ export function AllRoutes() {
   return (
     <Routes>
       <Route path='/' element={<Home />} />
-      <Route path='/comic' element={<IndividualComic />} />
+      <Route path='/comic/:id' element={<IndividualComic />} />
+      <Route path='comics/:id' element={<IndividualComic />} />
       <Route path='/comics' element={<AllComics />} />
       <Route path='/cart' element={<CartComic />} />
     </Routes>

@@ -1,9 +1,9 @@
-import P from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navbar } from '../../components/Navbar/Navbar';
+import * as CartActions from '../../store/modules/cart/actions';
 import { SectionContainer } from '../../components/SectionContainer';
-import hq from '../../assets/hqs/hq.jpg';
 import { Heading } from '../../components/Heading';
 import { ImgComic } from '../Home/styles';
 import * as Styled from './styles';
@@ -15,17 +15,23 @@ import { Loading } from '../../components/Loading';
 export function IndividualComic() {
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { id } = useParams();
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     api
-      .get(`/comics/2`)
+      .get(`/comics/${id}`)
       .then((response) => {
         setComics(response.data.data.results);
-        console.log(comics);
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
-  }, [comics]);
+  }, []);
+
+  function handleAddProduct(comic) {
+    dispatch(CartActions.addToCart(comic));
+  }
 
   return isLoading ? (
     <Loading />
@@ -51,7 +57,7 @@ export function IndividualComic() {
                 <Styled.PriceComic>
                   $ {comics.prices[0].price ? comics.prices[0].price : 7.99}
                 </Styled.PriceComic>
-                <Styled.AddCart>
+                <Styled.AddCart onClick={() => handleAddProduct(comics)}>
                   <Cart />
                   Adicionar ao Carrinho
                 </Styled.AddCart>

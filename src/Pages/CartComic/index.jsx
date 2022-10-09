@@ -1,56 +1,96 @@
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai';
 import * as Styled from './styles';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { SectionContainer } from '../../components/SectionContainer';
 import { Heading } from '../../components/Heading';
+import * as CartActions from '../../store/modules/cart/actions';
 import { Footer } from '../../components/Footer';
-import { api } from '../../services/api';
 import { Loading } from '../../components/Loading';
 
 export function CartComic() {
-  const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    api
-      .get(`/comics/600`)
-      .then((response) => {
-        setComics(response.data.data.results);
-        setIsLoading(false);
-      })
-      .catch((err) => console.error(err));
-  }, []);
+  const cart = useSelector((state) =>
+    state.cart.map((comic) => ({
+      ...comic,
+      subtotal: comic.prices[0].price * comic.amount,
+    }))
+  );
 
-  return isLoading ? (
-    <Loading />
-  ) : (
+  const total = useSelector((state) =>
+    state.cart.reduce(
+      (totalSum, product) =>
+        totalSum + product.prices[0].price * product.amount,
+      0
+    )
+  );
+
+  const dispatch = useDispatch();
+
+  function increment(comic) {
+    dispatch(
+      CartActions.updateAmount({
+        id: comic.id,
+        amount: comic.amount + 1,
+      })
+    );
+  }
+
+  function decrement(comic) {
+    dispatch(
+      CartActions.updateAmount({
+        id: comic.id,
+        amount: comic.amount - 1,
+      })
+    );
+  }
+
+  return (
     <Styled.Container>
       <Navbar />
       <SectionContainer>
-        <Heading>Carrinho de Compras</Heading>
+        {/* <Heading>Carrinho de Compras</Heading> */}
         <Styled.Wrapper>
-          {comics.map((comics) => (
-            <Styled.CartWrapper>
+          {cart.map((comic) => (
+            <Styled.CartWrapper key={comic.id}>
               <Styled.ProductWrapper>
                 <Styled.ProductTitle>PRODUTO</Styled.ProductTitle>
                 <Styled.CartImg
-                  src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
+                  src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
                 />
-                <Styled.ProductName>{comics.title}</Styled.ProductName>
+                <Styled.ProductName>{comic.title}</Styled.ProductName>
               </Styled.ProductWrapper>
               <Styled.ProductWrapper>
                 <Styled.OtherTitle>PREÇO</Styled.OtherTitle>
                 <Styled.ProductValue>
-                  $ {comics.prices[0].price ? comics.prices[0].price : 7.99}
+                  $ {comic.prices[0].price ? comic.prices[0].price : 7.99}
                 </Styled.ProductValue>
               </Styled.ProductWrapper>
               <Styled.ProductWrapper>
                 <Styled.OtherTitle>QUANTIDADE</Styled.OtherTitle>
-                <Styled.ProductValue>2</Styled.ProductValue>
+                <Styled.ProductValue>
+                  <Styled.ButtonPlusMinus
+                    type='button'
+                    onClick={() => increment(comic)}
+                  >
+                    <AiOutlinePlusCircle />
+                  </Styled.ButtonPlusMinus>
+                  {comic.amount}
+                  <Styled.ButtonPlusMinus
+                    type='button'
+                    onClick={() => decrement(comic)}
+                  >
+                    <AiOutlineMinusCircle />
+                  </Styled.ButtonPlusMinus>
+                </Styled.ProductValue>
               </Styled.ProductWrapper>
               <Styled.ProductWrapper>
                 <Styled.OtherTitle>TOTAL</Styled.OtherTitle>
-                <Styled.ProductValue>R$: 200</Styled.ProductValue>
+                <Styled.ProductValue>
+                  $ {comic.subtotal.toFixed(3).slice(0, -1)}
+                </Styled.ProductValue>
               </Styled.ProductWrapper>
             </Styled.CartWrapper>
           ))}
