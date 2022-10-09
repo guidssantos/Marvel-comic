@@ -10,6 +10,7 @@ import { Footer } from '../../components/Footer';
 
 export function Home() {
   const [comics, setComics] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     api
@@ -17,11 +18,14 @@ export function Home() {
       .then((response) => {
         setComics(response.data.data.results);
         console.log(comics);
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  return (
+  return isLoading ? (
+    <div>Carregando</div>
+  ) : (
     <Styled.Container>
       <Navbar />
       <SectionBackground>

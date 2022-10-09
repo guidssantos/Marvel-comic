@@ -94,7 +94,8 @@ export const CartTbody = styled.div`
 `;
 
 export const CartImg = styled.img`
-  width: 100%;
+  width: 70px;
+  height: 100px;
 `;
 
 export const ProductName = styled.a`
