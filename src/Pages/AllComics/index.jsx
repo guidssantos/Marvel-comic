@@ -1,22 +1,23 @@
-import { Link } from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
 import { Heading } from '../../components/Heading';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { SectionBackground } from '../../components/SectionBackground';
 import { SectionContainer } from '../../components/SectionContainer';
-import api from '../../services/api';
+import { api } from '../../services/api';
 import * as Styled from './styles';
 import { Footer } from '../../components/Footer';
+import { Loading } from '../../components/Loading';
 
 export function AllComics() {
   const [comics, setComics] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     api
       .get(`/comics`)
       .then((response) => {
         setComics(response.data.data.results);
-        console.log(comics);
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -36,7 +37,9 @@ export function AllComics() {
     }
   }, [comics]);
 
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <Styled.Container>
       <Navbar />
       <SectionBackground>
@@ -55,7 +58,9 @@ export function AllComics() {
             </Styled.BackgroundComic>
           ))}
         </Styled.ContainerComic>
-        <button onClick={handleMore}>Ver mais</button>
+        <button type='button' onClick={handleMore}>
+          Ver mais
+        </button>
       </SectionContainer>
       <Footer />
     </Styled.Container>

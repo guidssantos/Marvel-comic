@@ -9,10 +9,12 @@ import { ImgComic } from '../Home/styles';
 import * as Styled from './styles';
 import { Footer } from '../../components/Footer';
 import { Cart } from '../../components/Menu/styles';
-import api from '../../services/api';
+import { api } from '../../services/api';
+import { Loading } from '../../components/Loading';
 
 export function IndividualComic() {
   const [comics, setComics] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     api
@@ -20,11 +22,14 @@ export function IndividualComic() {
       .then((response) => {
         setComics(response.data.data.results);
         console.log(comics);
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [comics]);
 
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <Styled.Container>
       <Navbar />
       <SectionContainer>

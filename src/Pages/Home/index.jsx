@@ -4,7 +4,8 @@ import { Heading } from '../../components/Heading';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { SectionBackground } from '../../components/SectionBackground';
 import { SectionContainer } from '../../components/SectionContainer';
-import api from '../../services/api';
+import { Loading } from '../../components/Loading';
+import { api } from '../../services/api';
 import * as Styled from './styles';
 import { Footer } from '../../components/Footer';
 
@@ -21,10 +22,10 @@ export function Home() {
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [comics]);
 
   return isLoading ? (
-    <div>Carregando</div>
+    <Loading />
   ) : (
     <Styled.Container>
       <Navbar />

@@ -4,23 +4,26 @@ import { Navbar } from '../../components/Navbar/Navbar';
 import { SectionContainer } from '../../components/SectionContainer';
 import { Heading } from '../../components/Heading';
 import { Footer } from '../../components/Footer';
-import hq from '../../assets/hqs/hq.jpg';
-import api from '../../services/api';
+import { api } from '../../services/api';
+import { Loading } from '../../components/Loading';
 
 export function CartComic() {
   const [comics, setComics] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     api
       .get(`/comics/600`)
       .then((response) => {
         setComics(response.data.data.results);
-        console.log(comics);
+        setIsLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   }, []);
 
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <Styled.Container>
       <Navbar />
       <SectionContainer>
