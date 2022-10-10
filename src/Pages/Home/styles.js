@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { SectionContainer } from '../../components/SectionContainer';
 
 export const Container = styled.header`
   ${({ theme }) => css`
@@ -25,9 +26,12 @@ export const BackgroundComic = styled.div`
     background-color: black;
     border-radius: 10px;
     margin-bottom: 30px;
-    width: 200px;
+    width: 210px;
+    height: 400px;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 1);
     cursor: pointer;
+    transition: all ease-in-out 300ms;
+    overflow: hidden;
 
     @media (max-width: 460px) {
       width: 100%;
@@ -38,8 +42,14 @@ export const BackgroundComic = styled.div`
 export const ImgComic = styled.img`
   ${({ theme }) => css`
     width: 100%;
-    height: 300px;
+    height: 100%;
     border-radius: 10px;
+    transition: all ease-in-out 300ms;
+    overflow: hidden;
+
+    &:hover {
+      height: 80%;
+    }
 
     @media (${theme.media.lteMedium}) {
       width: 100%;
@@ -50,6 +60,7 @@ export const ImgComic = styled.img`
 
 export const TextComic = styled.p`
   ${({ theme }) => css`
+    position: relative;
     color: white;
     text-align: center;
     padding: 0 5px;

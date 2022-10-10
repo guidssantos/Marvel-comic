@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import { FaTimes } from 'react-icons/fa';
 import backgroundMenu from '../../assets/backgroud-menu/fundo-menu.jpg';
-import { SearchButton, Search } from '../Menu/styles';
 
 export const SidebarContainer = styled.aside`
   position: fixed;
@@ -44,27 +43,13 @@ export const SidebarMenu = styled.ul`
     text-align: center;
     align-items: center;
 
-    ${SearchButton} {
-      background-color: transparent;
-      svg {
-        position: relative;
-        right: 2rem;
-        top: 2px;
-      }
-    }
-
     @media ${theme.media.lteSmall} {
       grid-template-rows: repeat(6, 60px);
-      ${Search} {
-        & {
-          width: 200px;
-        }
-      }
     }
   `}
 `;
 
-export const SidebarLink = styled.a`
+export const SidebarLink = styled.div`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
@@ -76,7 +61,7 @@ export const SidebarLink = styled.a`
 
     &:hover {
       color: ${theme.colors.secondary};
-      transition: 0.3s ease-in-out;
+      transition: all ease-in-out 300ms;
       text-decoration: none;
     }
   `}

@@ -6,6 +6,7 @@ export function Pagination({ pages, setCurrentPage }) {
     <Styled.Container>
       {Array.from(Array(pages), (comics, index) => (
         <Styled.ButtonPagination
+          key={index}
           type='button'
           value={index}
           onClick={(e) => setCurrentPage(Number(e.target.value))}

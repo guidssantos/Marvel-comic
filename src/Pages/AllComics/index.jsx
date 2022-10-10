@@ -9,6 +9,12 @@ import * as Styled from './styles';
 import { Footer } from '../../components/Footer';
 import { Loading } from '../../components/Loading';
 import { Pagination } from '../../components/Pagination';
+import {
+  BackgroundComic,
+  ContainerComic,
+  ImgComic,
+  TextComic,
+} from '../Home/styles';
 
 export function AllComics() {
   const [comics, setComics] = useState([]);
@@ -31,14 +37,14 @@ export function AllComics() {
     api
       .get(`/comics`, {
         params: {
-          offset: 400,
+          offset: 900,
           limit: 100,
         },
       })
       .then((response) => {
         setComics([...response.data.data.results]);
+
         setIsLoading(false);
-        console.log(comics);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -58,19 +64,23 @@ export function AllComics() {
         </SectionContainer>
       </SectionBackground>
       <SectionContainer>
-        <Styled.ContainerComic>
+        <ContainerComic>
           {getRandom(currentComics, 10).map((comics) => (
-            <Styled.BackgroundComic key={comics.id}>
+            <BackgroundComic key={comics.id}>
               <Link to={`/comic/${comics.id}`}>
-                <Styled.ImgComic
+                <ImgComic
                   src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
                 />
-                <Styled.TextComic>{comics.title}</Styled.TextComic>
+                <TextComic>{comics.title}</TextComic>
               </Link>
-            </Styled.BackgroundComic>
+            </BackgroundComic>
           ))}
-        </Styled.ContainerComic>
-        <Pagination pages={pages} setCurrentPage={setCurrentPage} />
+        </ContainerComic>
+        <Pagination
+          key={comics.id}
+          pages={pages}
+          setCurrentPage={setCurrentPage}
+        />
       </SectionContainer>
       <Footer />
     </Styled.Container>

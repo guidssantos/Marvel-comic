@@ -45,16 +45,24 @@ export const MobileIcon = styled.div`
 `;
 
 export const HeaderMenu = styled.div`
-  display: inline-flex;
-  align-items: center;
+  ${({ theme }) => css`
+    display: inline-flex;
+    align-items: center;
 
-  a {
-    margin-right: 1em;
-    font-size: 16px;
-  }
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
+    a {
+      margin-right: 1em;
+      font-size: 16px;
+      transition: all ease-in-out 300ms;
+    }
+
+    a:hover {
+      color: ${theme.colors.secondary};
+    }
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  `}
 `;
 
 export const OneMenu = styled.div`
@@ -63,6 +71,10 @@ export const OneMenu = styled.div`
 
     &:hover {
       transform: scale(105%);
+    }
+
+    strong {
+      color: white;
     }
 
     &:active {
@@ -75,36 +87,4 @@ export const Cart = styled(FaShoppingCart)`
   cursor: pointer;
   width: 50px;
   color: #fff;
-`;
-
-export const SearchWrapper = styled.form`
-  ${({ theme }) => css`
-    position: relative;
-  `}
-`;
-
-export const Search = styled.input`
-  height: 30px;
-  width: 300px;
-  border-radius: 5px;
-  padding: 10px;
-  border: 0;
-
-  &::-webkit-search-cancel-button {
-    display: none;
-  }
-
-  &:focus {
-    outline: none;
-  }
-`;
-
-export const SearchButton = styled.button`
-  svg {
-    color: black;
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    cursor: pointer;
-  }
 `;
