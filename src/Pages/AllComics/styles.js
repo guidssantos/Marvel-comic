@@ -40,6 +40,11 @@ export const ImgComic = styled.img`
     width: 100%;
     height: 300px;
     border-radius: 10px;
+
+    @media ${theme.media.lteMedium} {
+      width: 100%;
+      height: 85%;
+    }
   `}
 `;
 

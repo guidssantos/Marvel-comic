@@ -65,7 +65,7 @@ export function CartComic() {
               <Styled.ProductWrapper>
                 <Styled.OtherTitle>PREÇO</Styled.OtherTitle>
                 <Styled.ProductValue>
-                  $ {comic.prices[0].price ? comic.prices[0].price : 7.99}
+                  $ {comic.prices[0].price}
                 </Styled.ProductValue>
               </Styled.ProductWrapper>
               <Styled.ProductWrapper>
@@ -75,14 +75,14 @@ export function CartComic() {
                     type='button'
                     onClick={() => increment(comic)}
                   >
-                    <AiOutlinePlusCircle />
+                    <Styled.IconPlus />
                   </Styled.ButtonPlusMinus>
                   {comic.amount}
                   <Styled.ButtonPlusMinus
                     type='button'
                     onClick={() => decrement(comic)}
                   >
-                    <AiOutlineMinusCircle />
+                    <Styled.IconMinus />
                   </Styled.ButtonPlusMinus>
                 </Styled.ProductValue>
               </Styled.ProductWrapper>

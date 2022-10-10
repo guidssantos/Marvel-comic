@@ -77,16 +77,6 @@ export const Cart = styled(FaShoppingCart)`
   color: #fff;
 `;
 
-export const Link = styled.a`
-  ${({ theme }) => css`
-    padding: 10px 50px;
-    background: ${theme.colors.primary};
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-  `}
-`;
-
 export const SearchWrapper = styled.form`
   ${({ theme }) => css`
     position: relative;

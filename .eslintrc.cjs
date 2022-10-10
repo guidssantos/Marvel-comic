@@ -12,9 +12,11 @@ module.exports = {
     'prettier',
   ],
   overrides: [],
-  parser: 'babel-eslint',
   parserOptions: {
-    ecmaVersion: '6',
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 'latest',
     sourceType: 'module',
   },
   plugins: ['react'],

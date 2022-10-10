@@ -55,7 +55,7 @@ export function IndividualComic() {
               </Styled.DescriptionComic>
               <Styled.PriceWrapper>
                 <Styled.PriceComic>
-                  $ {comics.prices[0].price ? comics.prices[0].price : 7.99}
+                  $ {comics.prices[0].price}
                 </Styled.PriceComic>
                 <Styled.AddCart onClick={() => handleAddProduct(comics)}>
                   <Cart />

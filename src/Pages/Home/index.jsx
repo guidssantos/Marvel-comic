@@ -13,24 +13,30 @@ import { Footer } from '../../components/Footer';
 
 export function Home() {
   const [comics, setComics] = useState([]);
+  const [newComics, setNewComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const amount = useSelector((state) =>
-    state.cart.reduce((sumAmount, comic) => {
-      sumAmount[comic.id] = comic.amount;
-
-      return sumAmount;
-    }, {})
-  );
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     api
-      .get(`/comics?limit=5`)
+      .get(`/comics?limit=10`, {
+        params: {
+          offset: 400,
+        },
+      })
       .then((response) => {
         setComics(response.data.data.results);
+      })
+      .catch((err) => console.log(err));
+
+    api
+      .get(`/comics?limit=10`, {
+        params: {
+          offset: 700,
+        },
+      })
+      .then((response) => {
+        setNewComics(response.data.data.results);
         setIsLoading(false);
-        console.log(comics);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -48,13 +54,13 @@ export function Home() {
       <SectionContainer>
         <Styled.HeadingComic>NOVAS HQS</Styled.HeadingComic>
         <Styled.ContainerComic>
-          {comics.map((comics) => (
+          {newComics.map((newComics) => (
             <Styled.BackgroundComic>
-              <Link key={comics.id} to={`comic/${comics.id}`}>
+              <Link key={newComics.id} to={`comic/${newComics.id}`}>
                 <Styled.ImgComic
-                  src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
+                  src={`${newComics.thumbnail.path}.${newComics.thumbnail.extension}`}
                 />
-                <Styled.TextComic>{comics.title}</Styled.TextComic>
+                <Styled.TextComic>{newComics.title}</Styled.TextComic>
               </Link>
             </Styled.BackgroundComic>
           ))}
@@ -75,7 +81,7 @@ export function Home() {
           ))}
         </Styled.ContainerComic>
         <Link to='/comics'>
-          <h1>Ver todas as HQS</h1>
+          <Styled.HeadingAllComics>VER TODAS AS HQS</Styled.HeadingAllComics>
         </Link>
       </SectionContainer>
       <Footer />

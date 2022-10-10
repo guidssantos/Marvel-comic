@@ -42,5 +42,14 @@ export const Loading = styled.div`
         transform: rotate(360deg);
       }
     }
+
+    @media ${theme.media.lteMedium} {
+      top: 30rem;
+      left: 30rem;
+    }
+    @media ${theme.media.lteSmall} {
+      top: 25rem;
+      left: 7rem;
+    }
   `}
 `;

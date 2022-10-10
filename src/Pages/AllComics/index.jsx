@@ -8,35 +8,44 @@ import { api } from '../../services/api';
 import * as Styled from './styles';
 import { Footer } from '../../components/Footer';
 import { Loading } from '../../components/Loading';
+import { Pagination } from '../../components/Pagination';
 
 export function AllComics() {
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [comicsPerPage, setComicsPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const pages = Math.ceil(comics.length / comicsPerPage);
+  const startIndex = currentPage * comicsPerPage;
+  const endIndex = startIndex + comicsPerPage;
+  const currentComics = comics.slice(startIndex, endIndex);
+
+  const getRandom = (arr, nr) =>
+    arr
+      .slice()
+      .sort(() => 0.5 - Math.random())
+      .slice(0, nr);
 
   useEffect(() => {
     api
-      .get(`/comics?limit=15`)
+      .get(`/comics`, {
+        params: {
+          offset: 400,
+          limit: 100,
+        },
+      })
       .then((response) => {
-        setComics(response.data.data.results);
+        setComics([...response.data.data.results]);
         setIsLoading(false);
+        console.log(comics);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  const handleMore = useCallback(async () => {
-    try {
-      const offset = comics.length;
-      const response = await api.get('comics', {
-        params: {
-          offset,
-        },
-      });
-
-      setComics([...comics, ...response.data.data.results]);
-    } catch (err) {
-      console.log(err);
-    }
-  }, [comics]);
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [comicsPerPage]);
 
   return isLoading ? (
     <Loading />
@@ -50,9 +59,9 @@ export function AllComics() {
       </SectionBackground>
       <SectionContainer>
         <Styled.ContainerComic>
-          {comics.map((comics) => (
+          {getRandom(currentComics, 10).map((comics) => (
             <Styled.BackgroundComic key={comics.id}>
-              <Link key={comics.id} to={`/comic/${comics.id}`}>
+              <Link to={`/comic/${comics.id}`}>
                 <Styled.ImgComic
                   src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
                 />
@@ -61,9 +70,7 @@ export function AllComics() {
             </Styled.BackgroundComic>
           ))}
         </Styled.ContainerComic>
-        <button type='button' onClick={handleMore}>
-          Ver mais
-        </button>
+        <Pagination pages={pages} setCurrentPage={setCurrentPage} />
       </SectionContainer>
       <Footer />
     </Styled.Container>

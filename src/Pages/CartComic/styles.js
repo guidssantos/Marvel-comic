@@ -1,3 +1,4 @@
+import { AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai';
 import styled, { css } from 'styled-components';
 import { Container as SectionContainer } from '../../components/SectionContainer/styles';
 
@@ -98,8 +99,14 @@ export const OtherTitle = styled.p`
 `;
 
 export const CartImg = styled.img`
-  width: 70px;
-  height: 100px;
+  ${({ theme }) => css`
+    width: 70px;
+    height: 100px;
+    @media ${theme.media.lteSmall} {
+      width: 100%;
+      height: 100%;
+    }
+  `}
 `;
 
 export const ProductName = styled.a`
@@ -108,15 +115,30 @@ export const ProductName = styled.a`
   `}
 `;
 
-export const ProductValue = styled.p`
+export const ProductValue = styled.div`
   ${({ theme }) => css`
     margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   `}
+`;
+
+export const IconPlus = styled(AiOutlinePlusCircle)`
+  width: 20px;
+  height: 20px;
+`;
+
+export const IconMinus = styled(AiOutlineMinusCircle)`
+  width: 20px;
+  height: 20px;
 `;
 
 export const ButtonPlusMinus = styled.button`
   background-color: white;
   width: 20px;
+  height: 20px;
+  margin: 10px;
   cursor: pointer;
 `;
 
@@ -127,6 +149,7 @@ export const CartCheckout = styled.div`
     margin: 1rem 10rem;
     @media ${theme.media.lteSmall} {
       align-items: center;
+      margin: 0;
     }
   `}
 `;

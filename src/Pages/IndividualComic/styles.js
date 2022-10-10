@@ -22,7 +22,7 @@ export const OneComicWrapper = styled.div`
     margin-top: ${theme.spacings.large};
 
     ${ImgComic} {
-      width: 33%;
+      width: 375px;
       height: 550px;
     }
 
@@ -35,6 +35,7 @@ export const OneComicWrapper = styled.div`
     @media ${theme.media.lteSmall} {
       ${ImgComic} {
         width: 100%;
+        height: 100%;
       }
     }
   `}
