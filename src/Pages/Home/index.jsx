@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import Typical from 'react-typical';
 import { Heading } from '../../components/Heading';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { SectionBackground } from '../../components/SectionBackground';
@@ -8,7 +8,6 @@ import { SectionContainer } from '../../components/SectionContainer';
 import { Loading } from '../../components/Loading';
 import { api } from '../../services/api';
 import * as Styled from './styles';
-import * as CartActions from '../../store/modules/cart/actions';
 import { Footer } from '../../components/Footer';
 
 export function Home() {
@@ -48,15 +47,20 @@ export function Home() {
       <Navbar />
       <SectionBackground>
         <SectionContainer>
-          <Heading>MARVEL COMICS</Heading>
+          <Heading>
+            <Typical
+              steps={['MARVEL COMICS', 4000, 'MARVEL STUDIOS', 4000]}
+              loop={Infinity}
+            />
+          </Heading>
         </SectionContainer>
       </SectionBackground>
       <SectionContainer>
         <Styled.HeadingComic>NOVAS HQS</Styled.HeadingComic>
         <Styled.ContainerComic>
           {newComics.map((newComics) => (
-            <Styled.BackgroundComic>
-              <Link key={newComics.id} to={`comic/${newComics.id}`}>
+            <Styled.BackgroundComic key={newComics.id}>
+              <Link to={`comic/${newComics.id}`}>
                 <Styled.ImgComic
                   src={`${newComics.thumbnail.path}.${newComics.thumbnail.extension}`}
                 />

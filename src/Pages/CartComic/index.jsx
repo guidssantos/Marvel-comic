@@ -1,17 +1,12 @@
-import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai';
+import { useState } from 'react';
 import * as Styled from './styles';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { SectionContainer } from '../../components/SectionContainer';
-import { Heading } from '../../components/Heading';
 import * as CartActions from '../../store/modules/cart/actions';
 import { Footer } from '../../components/Footer';
-import { Loading } from '../../components/Loading';
 
 export function CartComic() {
-  const [isLoading, setIsLoading] = useState(true);
-
   const cart = useSelector((state) =>
     state.cart.map((comic) => ({
       ...comic,
@@ -47,11 +42,16 @@ export function CartComic() {
     );
   }
 
+  function NeoApp(e) {
+    if (e.target.value === 'neoapp') {
+      return alert('oi');
+    }
+  }
+
   return (
     <Styled.Container>
       <Navbar />
       <SectionContainer>
-        {/* <Heading>Carrinho de Compras</Heading> */}
         <Styled.Wrapper>
           {cart.map((comic) => (
             <Styled.CartWrapper key={comic.id}>
@@ -97,13 +97,16 @@ export function CartComic() {
           <Styled.CartCheckout>
             <Styled.CuponWrapper>
               <Styled.CuponTitle>Inserir Cupom</Styled.CuponTitle>
-              <Styled.CuponInput type='text' />
+              <Styled.CuponInput type='text' onChange={(e) => NeoApp(e)} />
             </Styled.CuponWrapper>
             <Styled.Purchase>
               <Styled.PurchaseButton type='submit'>
                 Finalizar Compra
               </Styled.PurchaseButton>
             </Styled.Purchase>
+            <Styled.Subtotal>
+              <strong>SUBTOTAL:</strong> $ {total.toFixed(3).slice(0, -1)}
+            </Styled.Subtotal>
           </Styled.CartCheckout>
         </Styled.Wrapper>
       </SectionContainer>

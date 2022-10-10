@@ -50,11 +50,6 @@ export const ImgComic = styled.img`
     &:hover {
       height: 80%;
     }
-
-    @media (${theme.media.lteMedium}) {
-      width: 100%;
-      height: 85%;
-    }
   `}
 `;
 

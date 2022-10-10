@@ -20,5 +20,5 @@ export function Pagination({ pages, setCurrentPage }) {
 
 Pagination.propTypes = {
   pages: P.number.isRequired,
-  setCurrentPage: P.node.isRequired,
+  setCurrentPage: P.func.isRequired,
 };

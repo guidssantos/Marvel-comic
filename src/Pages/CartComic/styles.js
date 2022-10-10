@@ -12,18 +12,6 @@ export const Container = styled.section`
       justify-content: center;
       align-items: center;
     }
-
-    h1 {
-      text-align: left;
-      margin-bottom: 4rem;
-      color: ${theme.colors.primary};
-    }
-    @media ${theme.media.lteSmall} {
-      h1 {
-        font-size: 3rem;
-        text-align: center;
-      }
-    }
   `}
 `;
 
@@ -44,7 +32,7 @@ export const CartWrapper = styled.div`
     flex-wrap: wrap;
     text-align: center;
     justify-content: space-evenly;
-    margin-top: 30px;
+    margin-bottom: 20px;
 
     &:first-child {
       margin-top: 0;
@@ -59,7 +47,7 @@ export const CartWrapper = styled.div`
 
 export const ProductWrapper = styled.div`
   ${({ theme }) => css`
-    width: 70px;
+    width: 100px;
 
     p {
       color: black;
@@ -111,7 +99,11 @@ export const CartImg = styled.img`
 
 export const ProductName = styled.a`
   ${({ theme }) => css`
+    font-size: 12px;
+    font-weight: bold;
     color: black;
+    word-wrap: break-word;
+    display: inline-block;
   `}
 `;
 
@@ -145,10 +137,12 @@ export const ButtonPlusMinus = styled.button`
 export const CartCheckout = styled.div`
   ${({ theme }) => css`
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
     margin: 1rem 10rem;
     @media ${theme.media.lteSmall} {
-      align-items: center;
+      flex-direction: column-reverse;
       margin: 0;
     }
   `}
@@ -173,6 +167,10 @@ export const CuponTitle = styled.p`
 export const CuponInput = styled.input``;
 
 export const Purchase = styled.div``;
+
+export const Subtotal = styled.div`
+  padding: 20px;
+`;
 
 export const PurchaseButton = styled.button`
   cursor: pointer;

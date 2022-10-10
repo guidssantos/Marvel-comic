@@ -1,9 +1,11 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Typical from 'react-typical';
 import { Heading } from '../../components/Heading';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { SectionBackground } from '../../components/SectionBackground';
 import { SectionContainer } from '../../components/SectionContainer';
+
 import { api } from '../../services/api';
 import * as Styled from './styles';
 import { Footer } from '../../components/Footer';
@@ -60,7 +62,9 @@ export function AllComics() {
       <Navbar />
       <SectionBackground>
         <SectionContainer>
-          <Heading>TODAS AS HQS</Heading>
+          <Heading>
+            <Typical steps={['ALL COMICS', 4000]} loop={Infinity} />
+          </Heading>
         </SectionContainer>
       </SectionBackground>
       <SectionContainer>
@@ -76,11 +80,7 @@ export function AllComics() {
             </BackgroundComic>
           ))}
         </ContainerComic>
-        <Pagination
-          key={comics.id}
-          pages={pages}
-          setCurrentPage={setCurrentPage}
-        />
+        <Pagination pages={pages} setCurrentPage={setCurrentPage} />
       </SectionContainer>
       <Footer />
     </Styled.Container>
