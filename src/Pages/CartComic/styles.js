@@ -43,7 +43,8 @@ export const CartWrapper = styled.div`
       margin-top: 0;
     }
 
-    @media ${theme.media.lteSmall} {
+    @media ${theme.media.lteMedium} {
+      margin: 0;
       flex-direction: column;
       align-items: center;
     }
@@ -58,17 +59,27 @@ export const ProductWrapper = styled.div`
       color: black;
     }
 
+    @media ${theme.media.lteMedium} {
+      width: 200px;
+      margin-bottom: ${theme.spacings.small};
+    }
+
     @media ${theme.media.lteSmall} {
-      padding-bottom: 15px;
+      padding-bottom: ${theme.spacings.small};
+      margin: 0;
       width: 80%;
+
+      &:last-child {
+        padding: 0;
+      }
     }
   `}
 `;
 
 export const ProductTitle = styled.p`
   ${({ theme }) => css`
-    padding-bottom: 20px;
-    font-size: 18px;
+    padding-bottom: ${theme.spacings.medium};
+    font-size: ${theme.font.sizes.medium};
     margin: 0;
     font-weight: bold;
 
@@ -81,9 +92,13 @@ export const ProductTitle = styled.p`
 export const OtherTitle = styled.p`
   ${({ theme }) => css`
     padding-bottom: 6rem;
-    font-size: 18px;
+    font-size: ${theme.font.sizes.medium};
     margin: 0;
     font-weight: bold;
+
+    @media ${theme.media.lteMedium} {
+      padding-bottom: 1rem;
+    }
 
     @media ${theme.media.lteSmall} {
       padding-bottom: 5px;
@@ -92,23 +107,17 @@ export const OtherTitle = styled.p`
 `;
 
 export const CartImg = styled.img`
-  ${({ theme }) => css`
-    width: 70px;
-    height: 100px;
-    @media ${theme.media.lteSmall} {
-      width: 100%;
-      height: 100%;
-    }
-  `}
+  width: 100%;
 `;
 
-export const ProductName = styled.a`
+export const ProductName = styled.div`
   ${({ theme }) => css`
     font-size: 12px;
     font-weight: bold;
-    color: black;
-    word-wrap: break-word;
-    display: inline-block;
+
+    a {
+      color: black;
+    }
   `}
 `;
 
@@ -138,9 +147,19 @@ export const IconRemove = styled(AiOutlineCloseCircle)`
 `;
 
 export const ButtonRemove = styled.button`
-  background-color: white;
-  position: relative;
-  top: 8rem;
+  ${({ theme }) => css`
+    background-color: white;
+    position: relative;
+    top: 8rem;
+
+    &:active {
+      transform: scale(90%);
+    }
+
+    @media ${theme.media.lteMedium} {
+      top: 0;
+    }
+  `}
 `;
 
 export const ButtonPlusMinus = styled.button`
@@ -158,7 +177,7 @@ export const CartCheckout = styled.div`
     flex-wrap: wrap;
     align-items: center;
     margin: 1rem 10rem;
-    @media ${theme.media.lteSmall} {
+    @media ${theme.media.lteMedium} {
       flex-direction: column-reverse;
       margin: 0;
     }
@@ -166,7 +185,15 @@ export const CartCheckout = styled.div`
 `;
 
 export const CuponWrapper = styled.div`
-  margin: 2rem 0;
+  ${({ theme }) => css`
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+
+    @media ${theme.media.lteMedium} {
+      align-items: center;
+    }
+  `}
 `;
 
 export const CuponTitle = styled.p`
@@ -181,7 +208,26 @@ export const CuponTitle = styled.p`
   `}
 `;
 
-export const CuponInput = styled.input``;
+export const CuponInput = styled.input`
+  ${({ theme }) => css`
+    border: 1px solid rgb(56, 56, 56, 0.7);
+    padding: 10px;
+    border-radius: ${theme.spacings.xsmall};
+    transition: ease-in-out all 300ms;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      background-color: #eeeef3;
+    }
+
+    @media ${theme.media.lteSmall} {
+      width: 100%;
+    }
+  `}
+`;
 
 export const Purchase = styled.div``;
 
@@ -194,7 +240,16 @@ export const PurchaseButton = styled.button`
     cursor: pointer;
     color: white;
     background-color: ${theme.colors.primary};
-    padding: 10px;
+    padding: ${theme.spacings.small} ${theme.spacings.large};
     border-radius: 5px;
+    transition: ease-in-out all 300ms;
+    font-family: 'Roboto Condensed', sans-serif;
+
+    &:hover {
+      transform: scale(105%);
+    }
+    &:active {
+      transform: scale(90%);
+    }
   `}
 `;

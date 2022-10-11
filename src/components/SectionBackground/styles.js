@@ -5,7 +5,6 @@ export const Container = styled.section`
   ${({ theme }) => css`
     background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
       url(${background});
-    background-size: cover;
     min-height: 50vh;
     display: flex;
     align-items: center;
@@ -13,5 +12,11 @@ export const Container = styled.section`
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+
+    @media ${theme.media.lteSmall} {
+      background-size: 200% 100%;
+      background-repeat: no-repeat;
+      background-attachment: unset;
+    }
   `}
 `;

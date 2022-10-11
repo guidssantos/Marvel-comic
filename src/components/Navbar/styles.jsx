@@ -31,7 +31,7 @@ export const Icon = styled.div`
   outline: none;
 `;
 
-export const SidebarWrapper = styled.div`
+export const SidebarWrapper = styled.nav`
   color: #fff;
 `;
 
@@ -49,7 +49,7 @@ export const SidebarMenu = styled.ul`
   `}
 `;
 
-export const SidebarLink = styled.div`
+export const SidebarLink = styled.li`
   ${({ theme }) => css`
     display: flex;
     align-items: center;

@@ -1,15 +1,37 @@
 import styled, { css } from 'styled-components';
-import { SectionContainer } from '../../components/SectionContainer';
 
-export const Container = styled.header`
-  ${({ theme }) => css`
-    background: white;
-  `}
+export const Container = styled.section`
+  background: white;
 `;
 
-export const HeadingComic = styled.h1`
+export const HeadingComic = styled.h2`
   ${({ theme }) => css`
     margin-bottom: 20px;
+    position: relative;
+    color: ${theme.colors.primary};
+    display: inline-block;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: ${theme.colors.primary};
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+
+    &:hover:after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+    @media ${theme.media.lteSmall} {
+      font-size: ${theme.font.sizes.small};
+    }
   `}
 `;
 
@@ -18,10 +40,13 @@ export const ContainerComic = styled.article`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    @media (max-width: 480px) {
+      justify-content: center;
+    }
   `}
 `;
 
-export const BackgroundComic = styled.div`
+export const BackgroundComic = styled.main`
   ${({ theme }) => css`
     background-color: black;
     border-radius: 10px;
@@ -32,10 +57,6 @@ export const BackgroundComic = styled.div`
     cursor: pointer;
     transition: all ease-in-out 300ms;
     overflow: hidden;
-
-    @media (max-width: 460px) {
-      width: 100%;
-    }
   `}
 `;
 
@@ -62,4 +83,28 @@ export const TextComic = styled.p`
   `}
 `;
 
-export const HeadingAllComics = styled.h1``;
+export const HeadingAllComics = styled.h2`
+  ${({ theme }) => css`
+    position: relative;
+    color: ${theme.colors.primary};
+    display: inline-block;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: ${theme.colors.primary};
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+
+    &:hover:after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+  `}
+`;

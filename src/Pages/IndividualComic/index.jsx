@@ -40,7 +40,7 @@ export function IndividualComic() {
     <Loading />
   ) : (
     <>
-      {comics.map((comics) => (
+      {comics.map((comics, index) => (
         <Styled.Container
           style={{
             backgroundImage: `url(${comics.thumbnail.path}.${comics.thumbnail.extension})`,
@@ -53,7 +53,7 @@ export function IndividualComic() {
                 <Link to='/'>Return Home</Link>
               </Styled.ReturnHome>
               <Toaster />
-              <Styled.OneComicWrapper key={comics.id}>
+              <Styled.OneComicWrapper>
                 <ImgComic
                   src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
                   alt='imagem_hq'

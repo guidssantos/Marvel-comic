@@ -5,7 +5,7 @@ export const HeaderBackground = styled.header`
   background-color: black;
 `;
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.nav`
   ${({ theme }) => css`
     display: flex;
     justify-content: space-between;
@@ -20,37 +20,39 @@ export const HeaderContainer = styled.div`
   `}
 `;
 
-export const LogoWrapper = styled.div`
+export const LogoWrapper = styled.ul`
   ${({ theme }) => css`
-    margin-left: 10px;
+    margin-left: ${theme.spacings.small};
     img {
       width: 150px;
     }
   `}
 `;
 
-export const MobileIcon = styled.div`
-  display: none;
+export const MobileIcon = styled.li`
+  ${({ theme }) => css`
+    display: none;
 
-  @media screen and (max-width: 768px) {
-    display: block;
-    position: absolute;
-    top: 15px;
-    right: 0;
-    transform: translate(-100%, 75%);
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: white;
-  }
+    @media screen and (max-width: 768px) {
+      display: block;
+      position: absolute;
+      top: 15px;
+      right: 0;
+      transform: translate(-100%, 75%);
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: ${theme.colors.white};
+    }
+  `}
 `;
 
-export const HeaderMenu = styled.div`
+export const HeaderMenu = styled.ul`
   ${({ theme }) => css`
     display: inline-flex;
     align-items: center;
 
     a {
-      margin-right: 1em;
+      margin-right: ${theme.spacings.medium};
       font-size: 16px;
       transition: all ease-in-out 300ms;
     }
@@ -59,22 +61,22 @@ export const HeaderMenu = styled.div`
       color: ${theme.colors.secondary};
     }
 
-    @media screen and (max-width: 768px) {
+    @media ${theme.media.lteMedium} {
       display: none;
     }
   `}
 `;
 
-export const OneMenu = styled.div`
+export const OneMenu = styled.li`
   ${({ theme }) => css`
     transition: all ease-in-out 300ms;
 
-    &:hover {
-      transform: scale(105%);
+    strong {
+      color: ${theme.colors.white};
     }
 
-    strong {
-      color: white;
+    &:hover {
+      transform: scale(105%);
     }
 
     &:active {

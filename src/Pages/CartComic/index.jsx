@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import toast, { Toaster } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 import * as Styled from './styles';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { SectionContainer } from '../../components/SectionContainer';
@@ -44,7 +45,18 @@ export function CartComic() {
 
   function NeoApp(e) {
     if (e.target.value === 'neoapp') {
-      return alert('oi');
+      toast.success(
+        <a
+          style={{ color: 'black' }}
+          href='https://www.youtube.com/
+      '
+        >
+          Clique aqui!
+        </a>,
+        {
+          duration: 5000,
+        }
+      );
     }
   }
 
@@ -62,7 +74,9 @@ export function CartComic() {
                 <Styled.CartImg
                   src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
                 />
-                <Styled.ProductName>{comic.title}</Styled.ProductName>
+                <Styled.ProductName>
+                  <Link to={`/comic/${comic.id}`}>{comic.title}</Link>
+                </Styled.ProductName>
               </Styled.ProductWrapper>
               <Styled.ProductWrapper>
                 <Styled.OtherTitle>PRICE</Styled.OtherTitle>
@@ -116,7 +130,7 @@ export function CartComic() {
             </Styled.CuponWrapper>
             <Styled.Purchase>
               <Styled.PurchaseButton type='submit'>
-                Checkout
+                CHECKOUT
               </Styled.PurchaseButton>
             </Styled.Purchase>
             <Styled.Subtotal>

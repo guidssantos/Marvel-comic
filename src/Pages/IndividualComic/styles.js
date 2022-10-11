@@ -30,19 +30,19 @@ export const Container = styled.section`
   `}
 `;
 
-export const Background = styled.div`
+export const Background = styled.section`
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
   backdrop-filter: blur(5px);
   min-height: 100vh;
 `;
 
-export const ReturnHome = styled.h1`
+export const ReturnHome = styled.h2`
   ${({ theme }) => css`
     color: ${theme.colors.primary};
   `}
 `;
 
-export const OneComicWrapper = styled.div`
+export const OneComicWrapper = styled.main`
   ${({ theme }) => css`
     display: flex;
     flex-wrap: wrap;
