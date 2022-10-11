@@ -35,6 +35,7 @@ export function Home() {
       })
       .then((response) => {
         setNewComics(response.data.data.results);
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -48,7 +49,7 @@ export function Home() {
         <SectionContainer>
           <Heading>
             <Typical
-              steps={['MARVEL COMICS', 4000, 'MARVEL STUDIOS', 4000]}
+              steps={['MARVEL COMICS', 3000, 'MARVEL STUDIOS', 3000]}
               loop={Infinity}
             />
           </Heading>
