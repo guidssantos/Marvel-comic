@@ -1,5 +1,10 @@
-import { AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai';
+import {
+  AiOutlineMinusCircle,
+  AiOutlinePlusCircle,
+  AiOutlineCloseCircle,
+} from 'react-icons/ai';
 import styled, { css } from 'styled-components';
+
 import { Container as SectionContainer } from '../../components/SectionContainer/styles';
 
 export const Container = styled.section`
@@ -125,6 +130,18 @@ export const IconMinus = styled(AiOutlineMinusCircle)`
   width: 20px;
   height: 20px;
 `;
+export const IconRemove = styled(AiOutlineCloseCircle)`
+  cursor: pointer;
+
+  width: 20px;
+  height: 20px;
+`;
+
+export const ButtonRemove = styled.button`
+  background-color: white;
+  position: relative;
+  top: 8rem;
+`;
 
 export const ButtonPlusMinus = styled.button`
   background-color: white;
@@ -173,9 +190,11 @@ export const Subtotal = styled.div`
 `;
 
 export const PurchaseButton = styled.button`
-  cursor: pointer;
-  color: white;
-  background-color: #383838;
-  padding: 10px;
-  border-radius: 5px;
+  ${({ theme }) => css`
+    cursor: pointer;
+    color: white;
+    background-color: ${theme.colors.primary};
+    padding: 10px;
+    border-radius: 5px;
+  `}
 `;

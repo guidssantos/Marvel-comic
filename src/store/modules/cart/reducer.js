@@ -36,7 +36,6 @@ export const cart = createReducer([], {
         state[comicIndex].amount = Number(amount);
       }
     }
-
     return state;
   },
 });

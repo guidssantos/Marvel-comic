@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
 import * as Styled from './styles';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { SectionContainer } from '../../components/SectionContainer';
@@ -56,20 +55,20 @@ export function CartComic() {
           {cart.map((comic) => (
             <Styled.CartWrapper key={comic.id}>
               <Styled.ProductWrapper>
-                <Styled.ProductTitle>PRODUTO</Styled.ProductTitle>
+                <Styled.ProductTitle>PRODUCT</Styled.ProductTitle>
                 <Styled.CartImg
                   src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
                 />
                 <Styled.ProductName>{comic.title}</Styled.ProductName>
               </Styled.ProductWrapper>
               <Styled.ProductWrapper>
-                <Styled.OtherTitle>PREÇO</Styled.OtherTitle>
+                <Styled.OtherTitle>PRICE</Styled.OtherTitle>
                 <Styled.ProductValue>
                   $ {comic.prices[0].price}
                 </Styled.ProductValue>
               </Styled.ProductWrapper>
               <Styled.ProductWrapper>
-                <Styled.OtherTitle>QUANTIDADE</Styled.OtherTitle>
+                <Styled.OtherTitle>AMOUNT</Styled.OtherTitle>
                 <Styled.ProductValue>
                   <Styled.ButtonPlusMinus
                     type='button'
@@ -92,16 +91,28 @@ export function CartComic() {
                   $ {comic.subtotal.toFixed(3).slice(0, -1)}
                 </Styled.ProductValue>
               </Styled.ProductWrapper>
+              <Styled.ProductWrapper>
+                <Styled.ProductValue>
+                  <Styled.ButtonRemove
+                    type='button'
+                    onClick={() =>
+                      dispatch(CartActions.removeFromCart(comic.id))
+                    }
+                  >
+                    <Styled.IconRemove />
+                  </Styled.ButtonRemove>
+                </Styled.ProductValue>
+              </Styled.ProductWrapper>
             </Styled.CartWrapper>
           ))}
           <Styled.CartCheckout>
             <Styled.CuponWrapper>
-              <Styled.CuponTitle>Inserir Cupom</Styled.CuponTitle>
+              <Styled.CuponTitle>Insert Coupon</Styled.CuponTitle>
               <Styled.CuponInput type='text' onChange={(e) => NeoApp(e)} />
             </Styled.CuponWrapper>
             <Styled.Purchase>
               <Styled.PurchaseButton type='submit'>
-                Finalizar Compra
+                Checkout
               </Styled.PurchaseButton>
             </Styled.Purchase>
             <Styled.Subtotal>
