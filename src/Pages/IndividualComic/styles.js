@@ -4,9 +4,10 @@ import { Cart } from '../../components/Menu/styles';
 
 export const Container = styled.section`
   ${({ theme }) => css`
+    height: 100%;
     background-size: 110%;
     background-repeat: no-repeat;
-    min-height: 100vh;
+    min-height: 90vh;
     animation: movimention 15s ease infinite;
 
     @keyframes movimention {
@@ -20,12 +21,19 @@ export const Container = styled.section`
         background-position: 0%;
       }
     }
+
+    @media ${theme.media.lteSmall} {
+      & {
+        background-size: 230%;
+      }
+    }
   `}
 `;
 
 export const Background = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
   backdrop-filter: blur(5px);
+  min-height: 100vh;
 `;
 
 export const ReturnHome = styled.h1`
@@ -94,10 +102,16 @@ export const DescriptionComic = styled.p`
   `}
 `;
 export const AuthorsWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-bottom: 2rem;
+  ${({ theme }) => css`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+    @media ${theme.media.lteSmall} {
+      justify-content: center;
+    }
+  `}
 `;
 
 export const AuthorsDescription = styled.p`
@@ -107,15 +121,13 @@ export const AuthorsDescription = styled.p`
 `;
 
 export const PriceWrapper = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    @media (max-width: 990px) {
-      flex-direction: column;
-    }
-  `}
+  @media (max-width: 990px) {
+    flex-direction: column;
+  }
 `;
 
 export const PriceComic = styled.span`
@@ -133,13 +145,18 @@ export const AddCart = styled.a`
     display: flex;
     align-items: center;
     color: ${theme.colors.white};
-    background-color: black;
+    background-color: ${theme.colors.primary};
     padding: 10px 30px;
     border-radius: 5px;
+    transition: ease-in-out all 300ms;
 
     ${Cart} {
       width: auto;
       margin-right: 10px;
+    }
+
+    &:active {
+      transform: scale(90%);
     }
   `}
 `;

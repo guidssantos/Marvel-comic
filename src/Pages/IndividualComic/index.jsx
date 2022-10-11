@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import toast, { Toaster } from 'react-hot-toast';
 import { Navbar } from '../../components/Navbar/Navbar';
 import * as CartActions from '../../store/modules/cart/actions';
 import { SectionContainer } from '../../components/SectionContainer';
@@ -25,6 +26,7 @@ export function IndividualComic() {
       .then((response) => {
         setComics(response.data.data.results);
         setIsLoading(false);
+
         console.log(comics);
       })
       .catch((err) => console.log(err));
@@ -32,8 +34,8 @@ export function IndividualComic() {
 
   function handleAddProduct(comic) {
     dispatch(CartActions.addToCart(comic));
+    toast.success('You have added 1 item to cart');
   }
-
   return isLoading ? (
     <Loading />
   ) : (
@@ -50,7 +52,7 @@ export function IndividualComic() {
               <Styled.ReturnHome>
                 <Link to='/'>Return Home</Link>
               </Styled.ReturnHome>
-
+              <Toaster />
               <Styled.OneComicWrapper key={comics.id}>
                 <ImgComic
                   src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}

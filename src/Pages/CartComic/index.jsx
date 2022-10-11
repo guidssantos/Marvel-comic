@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import toast, { Toaster } from 'react-hot-toast';
 import * as Styled from './styles';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { SectionContainer } from '../../components/SectionContainer';
@@ -52,10 +53,12 @@ export function CartComic() {
       <Navbar />
       <SectionContainer>
         <Styled.Wrapper>
+          <Toaster />
           {cart.map((comic) => (
             <Styled.CartWrapper key={comic.id}>
               <Styled.ProductWrapper>
                 <Styled.ProductTitle>PRODUCT</Styled.ProductTitle>
+
                 <Styled.CartImg
                   src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
                 />
@@ -95,9 +98,10 @@ export function CartComic() {
                 <Styled.ProductValue>
                   <Styled.ButtonRemove
                     type='button'
-                    onClick={() =>
-                      dispatch(CartActions.removeFromCart(comic.id))
-                    }
+                    onClick={() => {
+                      dispatch(CartActions.removeFromCart(comic.id));
+                      toast.success('You removed your product from cart');
+                    }}
                   >
                     <Styled.IconRemove />
                   </Styled.ButtonRemove>
