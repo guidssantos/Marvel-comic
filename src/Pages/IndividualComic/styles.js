@@ -24,7 +24,7 @@ export const Container = styled.section`
 
     @media ${theme.media.lteSmall} {
       & {
-        background-size: 230%;
+        background-size: 300%;
       }
     }
   `}
