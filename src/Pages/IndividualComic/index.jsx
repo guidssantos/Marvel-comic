@@ -25,6 +25,7 @@ export function IndividualComic() {
       .then((response) => {
         setComics(response.data.data.results);
         setIsLoading(false);
+        console.log(comics);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -36,37 +37,57 @@ export function IndividualComic() {
   return isLoading ? (
     <Loading />
   ) : (
-    <Styled.Container>
-      <Navbar />
-      <SectionContainer>
-        <Styled.ReturnHome>
-          <Link to='/'>Voltar para a Home</Link>
-        </Styled.ReturnHome>
-        {comics.map((comics) => (
-          <Styled.OneComicWrapper key={comics.id}>
-            <ImgComic
-              src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
-              alt='imagem_hq'
-            />
-            <Styled.TextWrapper>
-              <Heading>{comics.title}</Heading>
-              <Styled.DescriptionComic>
-                {comics.description}
-              </Styled.DescriptionComic>
-              <Styled.PriceWrapper>
-                <Styled.PriceComic>
-                  $ {comics.prices[0].price}
-                </Styled.PriceComic>
-                <Styled.AddCart onClick={() => handleAddProduct(comics)}>
-                  <Cart />
-                  Adicionar ao Carrinho
-                </Styled.AddCart>
-              </Styled.PriceWrapper>
-            </Styled.TextWrapper>
-          </Styled.OneComicWrapper>
-        ))}
-      </SectionContainer>
-      {/* <Footer /> */}
-    </Styled.Container>
+    <>
+      {comics.map((comics) => (
+        <Styled.Container
+          style={{
+            backgroundImage: `url(${comics.thumbnail.path}.${comics.thumbnail.extension})`,
+          }}
+        >
+          <Navbar />
+          <Styled.Background>
+            <SectionContainer>
+              <Styled.ReturnHome>
+                <Link to='/'>Return Home</Link>
+              </Styled.ReturnHome>
+
+              <Styled.OneComicWrapper key={comics.id}>
+                <ImgComic
+                  src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
+                  alt='imagem_hq'
+                />
+
+                <Styled.TextWrapper>
+                  <Heading>{comics.title}</Heading>
+                  <Styled.DescriptionComic>
+                    {comics.description
+                      ? comics.description
+                      : 'Without description'}
+                  </Styled.DescriptionComic>
+
+                  <Styled.AuthorsWrapper>
+                    {comics.creators.items.map((comic) => (
+                      <Styled.AuthorsDescription>
+                        <strong>{comic.role}:</strong> {comic.name}
+                      </Styled.AuthorsDescription>
+                    ))}
+                  </Styled.AuthorsWrapper>
+                  <Styled.PriceWrapper>
+                    <Styled.PriceComic>
+                      $ {comics.prices[0].price}
+                    </Styled.PriceComic>
+                    <Styled.AddCart onClick={() => handleAddProduct(comics)}>
+                      <Cart />
+                      Add To Cart
+                    </Styled.AddCart>
+                  </Styled.PriceWrapper>
+                </Styled.TextWrapper>
+              </Styled.OneComicWrapper>
+            </SectionContainer>
+          </Styled.Background>
+          <Footer />
+        </Styled.Container>
+      ))}
+    </>
   );
 }

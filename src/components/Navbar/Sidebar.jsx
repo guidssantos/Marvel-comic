@@ -20,7 +20,7 @@ export function Sidebar({ isOpen, toggle }) {
             <Styled.SidebarLink>Home</Styled.SidebarLink>
           </Link>
           <Link to='/comics'>
-            <Styled.SidebarLink>Ver todas as HQ</Styled.SidebarLink>
+            <Styled.SidebarLink>See All Comics</Styled.SidebarLink>
           </Link>
           <OneMenu>
             <Link to='/cart'>

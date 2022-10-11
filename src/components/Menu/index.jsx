@@ -22,7 +22,7 @@ export function Menu({ toggle }) {
         </Styled.MobileIcon>
         <Styled.HeaderMenu>
           <Link to='/'>Home</Link>
-          <Link to='/comics'>Ver Todas as HQS</Link>
+          <Link to='/comics'>See All Comics</Link>
           <Styled.OneMenu>
             <Link to='/cart'>
               <Styled.Cart />

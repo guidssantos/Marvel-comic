@@ -4,9 +4,17 @@ import { Cart } from '../../components/Menu/styles';
 
 export const Container = styled.section`
   ${({ theme }) => css`
-    background-color: #383838;
+  background-size: 100%;
+    height: 100%
     min-height: 100vh;
+
+
   `}
+`;
+
+export const Background = styled.div`
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+  backdrop-filter: blur(5px);
 `;
 
 export const ReturnHome = styled.h1`
@@ -19,6 +27,8 @@ export const OneComicWrapper = styled.div`
   ${({ theme }) => css`
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     margin-top: ${theme.spacings.large};
 
     ${ImgComic} {
@@ -64,12 +74,25 @@ export const TextWrapper = styled.div`
 
 export const DescriptionComic = styled.p`
   ${({ theme }) => css`
-    width: 400px;
+    display: flex;
+    justify-content: center;
 
     @media (max-width: 990px) {
       width: 100%;
     }
   `}
+`;
+export const AuthorsWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+`;
+
+export const AuthorsDescription = styled.p`
+  font-size: 14px;
+  margin: 1.4rem 1rem;
+  text-transform: capitalize;
 `;
 
 export const PriceWrapper = styled.div`
