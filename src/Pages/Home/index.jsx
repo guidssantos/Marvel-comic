@@ -35,7 +35,6 @@ export function Home() {
       })
       .then((response) => {
         setNewComics(response.data.data.results);
-        setIsLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
