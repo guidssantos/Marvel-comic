@@ -4,11 +4,22 @@ import { Cart } from '../../components/Menu/styles';
 
 export const Container = styled.section`
   ${({ theme }) => css`
-  background-size: 100%;
-    height: 100%
+    background-size: 110%;
+    background-repeat: no-repeat;
     min-height: 100vh;
+    animation: movimention 15s ease infinite;
 
-
+    @keyframes movimention {
+      0% {
+        background-position: 0%;
+      }
+      50% {
+        background-position: 100%;
+      }
+      100% {
+        background-position: 0%;
+      }
+    }
   `}
 `;
 

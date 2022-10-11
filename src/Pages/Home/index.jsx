@@ -56,7 +56,7 @@ export function Home() {
         </SectionContainer>
       </SectionBackground>
       <SectionContainer>
-        <Styled.HeadingComic>NOVAS HQS</Styled.HeadingComic>
+        <Styled.HeadingComic>NEW COMICS</Styled.HeadingComic>
         <Styled.ContainerComic>
           {newComics.map((newComics) => (
             <Styled.BackgroundComic key={newComics.id}>
@@ -71,7 +71,7 @@ export function Home() {
         </Styled.ContainerComic>
       </SectionContainer>
       <SectionContainer>
-        <Styled.HeadingComic>HQS MAIS COMPRADAS</Styled.HeadingComic>
+        <Styled.HeadingComic>MOST PURCHASED COMICS</Styled.HeadingComic>
         <Styled.ContainerComic>
           {comics.map((comics) => (
             <Styled.BackgroundComic key={comics.id}>
@@ -85,7 +85,7 @@ export function Home() {
           ))}
         </Styled.ContainerComic>
         <Link to='/comics'>
-          <Styled.HeadingAllComics>VER TODAS AS HQS</Styled.HeadingAllComics>
+          <Styled.HeadingAllComics>SEE ALL COMICS</Styled.HeadingAllComics>
         </Link>
       </SectionContainer>
       <Footer />
