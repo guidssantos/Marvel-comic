@@ -11,6 +11,17 @@ Marvel Comics é um website simulando uma loja de quadrinhos da marvel.  Projeto
 Umas das primeiras coisas que realizei ao iniciar o projeto foi implementar as ferramentas prettier e eslint pois com elas, economizo bastante tempo e evito que a aplicação contenha algum bug e o codigo fica mais bonito! </br> Após isso, fiz a parte de menu, a estrutura do menu que utilizei geralmente utilizo na maioria dos meus projetos pois acho ele bem pratico e bonito fora que o codigo dele é bem facil de entender ([Menu](https://github.com/guidssantos/Marvel-comic/tree/master/src/components/Menu) e [Navbar](https://github.com/guidssantos/Marvel-comic/tree/master/src/components/Navbar)].
 
 Eu queria algo que impactasse na primeira section, que não ficasse algo seco e que tenha a cara da marvel então, coloquei um banner com personagens de hqs da marvel e implementei um efeito de parallax, dei continuidade e pensei na possibilidade de fazer cards com a foto, nome da hq e um fundo preto, tive inspiração nos modelos de cards que desenvolvo no estagio e depois fiz uma animação que ficou bem legal, ao passar o mouse por cima da imagem, ela revela o nome da hq.
+
+Depois criei as paginas que exibem a hq individual e a pagina de carrinho, sempre pensando no mobile e como o projeto ficaria responsivo. A partir daqui, tudo ficou mais legal pois, fiz a implementação de requisição da api da marvel utilizando o axios, pensei em utilizar o fetch porem, o axios é bem pratico, tive umas dificuldades mas nada como uma boa pesquisa no stackoverflow para ajudar. Com isso consegui colocar o conteudo de forma dinamica, também fiz uma pagina com paginação que exibe varias outras hqs e penso em implementar um campo de busca. Fiz a implementação de um carrinho de compras com redux, aprendi a utiliza-lo por conta de um curso em que eu realizei mas claro, qualquer erro e bug que acontecia eu pesquisava como resolve-lo no stack, medium ou youtube e acabou funcionando bem.
+
+Por fim, realizei os testes com cypress, admito que geralmente eu utilizo o Jest porem, eu achei muito MASSA e facil a maneira de testar com cypress, a documentação é bem explicativa e o proprio dashboard já ajuda bastante. Fiz testes para verificar se continha o background na home, se tinha os cards em todas as paginas, se o carrinho estava mudando a quantidade e calculando o valor correto e entre outras coisas.
+
+Esse Projeto foi bem divertido de se realizar, aprendi bastante coisas novas com ele e fico feliz que consegui desenvolver os componentes que eu queria. Espero que gostem!!
+
+<strong>Easter Egg:</strong>
+Utilize a palavra a baixo no 'Insert Coupon' do carrinho
+neoapp
+
 ## 💻 Como executar o Projeto
 ### Pré-requisitos
 
