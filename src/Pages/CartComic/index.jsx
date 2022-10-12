@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import toast, { Toaster } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as Styled from './styles';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { SectionContainer } from '../../components/SectionContainer';
@@ -8,6 +8,9 @@ import * as CartActions from '../../store/modules/cart/actions';
 import { Footer } from '../../components/Footer';
 
 export function CartComic() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const cart = useSelector((state) =>
     state.cart.map((comic) => ({
       ...comic,
@@ -22,8 +25,6 @@ export function CartComic() {
       0
     )
   );
-
-  const dispatch = useDispatch();
 
   function increment(comic) {
     dispatch(
@@ -48,8 +49,9 @@ export function CartComic() {
       toast.success(
         <a
           style={{ color: 'black' }}
-          href='https://www.youtube.com/
-      '
+          href='https://www.youtube.com/watch?v=0eLNHRipyFU'
+          target='_blank'
+          rel='noreferrer'
         >
           Clique aqui!
         </a>,
@@ -59,6 +61,15 @@ export function CartComic() {
       );
     }
   }
+
+  function remove(comic) {
+    dispatch(CartActions.removeFromCart(comic.id));
+    toast.success('You removed your product from cart');
+  }
+
+  const redirect = () => {
+    navigate('/purchase');
+  };
 
   return (
     <Styled.Container>
@@ -70,7 +81,6 @@ export function CartComic() {
             <Styled.CartWrapper key={comic.id}>
               <Styled.ProductWrapper>
                 <Styled.ProductTitle>PRODUCT</Styled.ProductTitle>
-
                 <Styled.CartImg
                   src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
                 />
@@ -112,10 +122,7 @@ export function CartComic() {
                 <Styled.ProductValue>
                   <Styled.ButtonRemove
                     type='button'
-                    onClick={() => {
-                      dispatch(CartActions.removeFromCart(comic.id));
-                      toast.success('You removed your product from cart');
-                    }}
+                    onClick={() => remove(comic)}
                   >
                     <Styled.IconRemove />
                   </Styled.ButtonRemove>
@@ -123,20 +130,30 @@ export function CartComic() {
               </Styled.ProductWrapper>
             </Styled.CartWrapper>
           ))}
-          <Styled.CartCheckout>
-            <Styled.CuponWrapper>
-              <Styled.CuponTitle>Insert Coupon</Styled.CuponTitle>
-              <Styled.CuponInput type='text' onChange={(e) => NeoApp(e)} />
-            </Styled.CuponWrapper>
-            <Styled.Purchase>
-              <Styled.PurchaseButton type='submit'>
+          {total ? (
+            <Styled.CartCheckout>
+              <Styled.CuponWrapper>
+                <Styled.CuponTitle>Insert Coupon</Styled.CuponTitle>
+                <Styled.CuponInput type='text' onChange={(e) => NeoApp(e)} />
+              </Styled.CuponWrapper>
+              <Styled.PurchaseButton
+                type='submit'
+                onClick={() => {
+                  redirect();
+                }}
+              >
                 CHECKOUT
               </Styled.PurchaseButton>
-            </Styled.Purchase>
-            <Styled.Subtotal>
-              <strong>SUBTOTAL:</strong> $ {total.toFixed(3).slice(0, -1)}
-            </Styled.Subtotal>
-          </Styled.CartCheckout>
+
+              <Styled.Subtotal>
+                <strong>SUBTOTAL: </strong> $ {total.toFixed(3).slice(0, -1)}
+              </Styled.Subtotal>
+            </Styled.CartCheckout>
+          ) : (
+            <div style={{ textAlign: 'center' }}>
+              Não tem nenhum item no carrinho
+            </div>
+          )}
         </Styled.Wrapper>
       </SectionContainer>
       <Footer />
