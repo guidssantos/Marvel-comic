@@ -8,27 +8,23 @@ import styled, { css } from 'styled-components';
 import { Container as SectionContainer } from '../../components/SectionContainer/styles';
 
 export const Container = styled.section`
-  ${({ theme }) => css`
-    background-color: #eeeef3;
+  background-color: #eeeef3;
 
-    ${SectionContainer} {
-      min-height: 85vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  `}
+  ${SectionContainer} {
+    min-height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const Wrapper = styled.article`
-  ${({ theme }) => css`
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 
-    padding: 20px;
-    width: 80%;
-    background-color: white;
-  `}
+  padding: 20px;
+  width: 80%;
+  background-color: white;
 `;
 
 export const CartWrapper = styled.div`
@@ -111,23 +107,19 @@ export const CartImg = styled.img`
 `;
 
 export const ProductName = styled.div`
-  ${({ theme }) => css`
-    font-size: 12px;
-    font-weight: bold;
+  font-size: 12px;
+  font-weight: bold;
 
-    a {
-      color: black;
-    }
-  `}
+  a {
+    color: black;
+  }
 `;
 
 export const ProductValue = styled.div`
-  ${({ theme }) => css`
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  `}
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 `;
 
 export const IconPlus = styled(AiOutlinePlusCircle)`
@@ -150,7 +142,7 @@ export const ButtonRemove = styled.button`
   ${({ theme }) => css`
     background-color: white;
     position: relative;
-    top: 8rem;
+    top: 9rem;
 
     &:active {
       transform: scale(90%);
@@ -164,9 +156,6 @@ export const ButtonRemove = styled.button`
 
 export const ButtonPlusMinus = styled.button`
   background-color: white;
-  width: 20px;
-  height: 20px;
-  margin: 10px;
   cursor: pointer;
 `;
 
@@ -229,10 +218,15 @@ export const CuponInput = styled.input`
   `}
 `;
 
-export const Purchase = styled.div``;
-
 export const Subtotal = styled.div`
-  padding: 20px;
+  ${({ theme }) => css`
+    display: flex;
+    padding: 20px;
+    @media ${theme.media.lteSmall} {
+      flex-direction: column;
+      align-items: center;
+    }
+  `}
 `;
 
 export const PurchaseButton = styled.button`
