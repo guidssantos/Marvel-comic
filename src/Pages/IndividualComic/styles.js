@@ -38,7 +38,27 @@ export const Background = styled.section`
 
 export const ReturnHome = styled.h2`
   ${({ theme }) => css`
-    color: ${theme.colors.primary};
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: ${theme.colors.white};
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+
+    &:hover:after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
   `}
 `;
 
@@ -140,19 +160,26 @@ export const PriceComic = styled.span`
     }
   `}
 `;
-export const AddCart = styled.a`
+export const AddCart = styled.button`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
     color: ${theme.colors.white};
     background-color: ${theme.colors.primary};
-    padding: 10px 30px;
+    padding: 15px 30px;
     border-radius: 5px;
     transition: ease-in-out all 300ms;
+    cursor: pointer;
 
     ${Cart} {
       width: auto;
       margin-right: 10px;
+    }
+
+    &:hover {
+      background-color: transparent;
+      border: 1px solid ${theme.colors.primary};
+      transform: scale(105%);
     }
 
     &:active {
