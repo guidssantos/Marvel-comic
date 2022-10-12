@@ -1,11 +1,9 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  `}
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 `;
 
 export const ButtonPagination = styled.button`

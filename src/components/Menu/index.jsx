@@ -1,8 +1,7 @@
-import { FaBars, FaSearch } from 'react-icons/fa';
+import { FaBars } from 'react-icons/fa';
 import P from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
 import * as Styled from './styles';
 import logo from '../../assets/logo/marvel-comics-logo.png';
 

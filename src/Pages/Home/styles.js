@@ -36,42 +36,36 @@ export const HeadingComic = styled.h2`
 `;
 
 export const ContainerComic = styled.article`
-  ${({ theme }) => css`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    @media (max-width: 480px) {
-      justify-content: center;
-    }
-  `}
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  @media (max-width: 480px) {
+    justify-content: center;
+  }
 `;
 
 export const BackgroundComic = styled.main`
-  ${({ theme }) => css`
-    background-color: black;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    width: 210px;
-    height: 400px;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 1);
-    cursor: pointer;
-    transition: all ease-in-out 300ms;
-    overflow: hidden;
-  `}
+  background-color: black;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  width: 210px;
+  height: 400px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 1);
+  cursor: pointer;
+  transition: all ease-in-out 300ms;
+  overflow: hidden;
 `;
 
 export const ImgComic = styled.img`
-  ${({ theme }) => css`
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    transition: all ease-in-out 300ms;
-    overflow: hidden;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  transition: all ease-in-out 300ms;
+  overflow: hidden;
 
-    &:hover {
-      height: 80%;
-    }
-  `}
+  &:hover {
+    height: 80%;
+  }
 `;
 
 export const TextComic = styled.p`

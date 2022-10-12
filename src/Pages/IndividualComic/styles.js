@@ -112,14 +112,12 @@ export const TextWrapper = styled.div`
 `;
 
 export const DescriptionComic = styled.p`
-  ${({ theme }) => css`
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
-    @media (max-width: 990px) {
-      width: 100%;
-    }
-  `}
+  @media (max-width: 990px) {
+    width: 100%;
+  }
 `;
 export const AuthorsWrapper = styled.div`
   ${({ theme }) => css`
