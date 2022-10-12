@@ -10,16 +10,28 @@ export const Container = styled.div`
 
 export const ButtonPagination = styled.button`
   ${({ theme }) => css`
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     background-color: black;
     margin-right: 10px;
     border-radius: 5px;
     color: white;
     cursor: pointer;
+    transition: ease-in-out all 300ms;
 
     &:last-child {
       margin-right: 0;
+    }
+
+    &:hover,
+    :focus {
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+    }
+
+    &:active {
+      transform: scale(80%);
     }
 
     @media ${theme.media.lteMedium} {
