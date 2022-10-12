@@ -39,7 +39,7 @@ export function AllComics() {
     api
       .get(`/comics`, {
         params: {
-          offset: 300,
+          offset: 2500,
           limit: 100,
         },
       })
