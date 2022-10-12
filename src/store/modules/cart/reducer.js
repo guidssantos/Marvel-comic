@@ -29,10 +29,9 @@ export const cart = createReducer([], {
     const comicExist = state.find((comic) => comic.id === id);
 
     if (comicExist) {
-      console.log(action.payload);
       const comicIndex = state.findIndex((comic) => comic.id === comicExist.id);
 
-      if (comicIndex >= 0 && amount >= 0) {
+      if (comicIndex >= 0 && amount >= 1) {
         state[comicIndex].amount = Number(amount);
       }
     }
