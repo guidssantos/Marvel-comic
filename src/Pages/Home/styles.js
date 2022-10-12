@@ -79,7 +79,8 @@ export const TextComic = styled.p`
     position: relative;
     color: white;
     text-align: center;
-    padding: 0 5px;
+    margin: 0;
+    padding: 10px 5px;
   `}
 `;
 
