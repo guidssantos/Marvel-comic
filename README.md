@@ -18,8 +18,6 @@ Por fim, realizei os testes com cypress, admito que geralmente eu utilizo o Jest
 
 Esse Projeto foi bem divertido de se realizar, aprendi bastante coisas novas com ele e fico feliz que consegui desenvolver os componentes que eu queria. Espero que gostem!!
 
-<strong>Easter Egg:</strong>Utilize a palabra 'neoapp' no insert coupon localizado no carrinho de compras
-
 ## 💻 Como executar o Projeto
 ### Pré-requisitos
 
@@ -82,3 +80,7 @@ Ver o [Package.json](https://github.com/guidssantos/Marvel-comic/blob/master/pac
  <br />
  <sub><b>Guilherme dos Santos</b></sub></a>
  <p> <b><a href='https://www.linkedin.com/in/guidssantos/'>Linkedin</a></b></p>
+
+## Cupom
+<strong>Easter Egg:</strong> Utilize a palavra 'neoapp' no insert coupon localizado no carrinho de compras
+
