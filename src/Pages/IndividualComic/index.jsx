@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import toast, { Toaster } from 'react-hot-toast';
 import { Navbar } from '../../components/Navbar/Navbar';
@@ -26,8 +26,6 @@ export function IndividualComic() {
       .then((response) => {
         setComics(response.data.data.results);
         setIsLoading(false);
-
-        console.log(comics);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -36,59 +34,61 @@ export function IndividualComic() {
     dispatch(CartActions.addToCart(comic));
     toast.success('You have added 1 item to cart');
   }
+
   return isLoading ? (
     <Loading />
   ) : (
     <>
-      {comics.map((comics, index) => (
-        <Styled.Container
-          style={{
-            backgroundImage: `url(${comics.thumbnail.path}.${comics.thumbnail.extension})`,
-          }}
-        >
-          <Navbar />
-          <Styled.Background>
-            <SectionContainer>
-              <Styled.ReturnHome>
-                <Link to='/'>Return Home</Link>
-              </Styled.ReturnHome>
-              <Toaster />
-              <Styled.OneComicWrapper>
-                <ImgComic
-                  src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
-                  alt='imagem_hq'
-                />
+      {comics.map((comics) => (
+        <React.Fragment key={comics.id}>
+          <Styled.Container
+            style={{
+              backgroundImage: `url(${comics.thumbnail.path}.${comics.thumbnail.extension})`,
+            }}
+          >
+            <Navbar />
+            <Styled.Background>
+              <SectionContainer>
+                <Styled.ReturnHome>
+                  <Link to='/'>Return Home</Link>
+                </Styled.ReturnHome>
+                <Toaster />
+                <Styled.OneComicWrapper>
+                  <ImgComic
+                    src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
+                    alt={`${comics.title}`}
+                  />
 
-                <Styled.TextWrapper>
-                  <Heading>{comics.title}</Heading>
-                  <Styled.DescriptionComic>
-                    {comics.description
-                      ? comics.description
-                      : 'Without description'}
-                  </Styled.DescriptionComic>
-
-                  <Styled.AuthorsWrapper>
-                    {comics.creators.items.map((comic) => (
-                      <Styled.AuthorsDescription>
-                        <strong>{comic.role}:</strong> {comic.name}
-                      </Styled.AuthorsDescription>
-                    ))}
-                  </Styled.AuthorsWrapper>
-                  <Styled.PriceWrapper>
-                    <Styled.PriceComic>
-                      Price: $ {comics.prices[0].price}
-                    </Styled.PriceComic>
-                    <Styled.AddCart onClick={() => handleAddProduct(comics)}>
-                      <Cart />
-                      Add To Cart
-                    </Styled.AddCart>
-                  </Styled.PriceWrapper>
-                </Styled.TextWrapper>
-              </Styled.OneComicWrapper>
-            </SectionContainer>
-          </Styled.Background>
-          <Footer />
-        </Styled.Container>
+                  <Styled.TextWrapper>
+                    <Heading>{comics.title}</Heading>
+                    <Styled.DescriptionComic>
+                      {comics.description
+                        ? comics.description
+                        : 'Without description'}
+                    </Styled.DescriptionComic>
+                    <Styled.AuthorsWrapper>
+                      {comics.creators.items.map((comic) => (
+                        <Styled.AuthorsDescription key={comic.name}>
+                          <strong>{comic.role}:</strong> {comic.name}
+                        </Styled.AuthorsDescription>
+                      ))}
+                    </Styled.AuthorsWrapper>
+                    <Styled.PriceWrapper>
+                      <Styled.PriceComic>
+                        Price: $ {comics.prices[0].price}
+                      </Styled.PriceComic>
+                      <Styled.AddCart onClick={() => handleAddProduct(comics)}>
+                        <Cart />
+                        Add To Cart
+                      </Styled.AddCart>
+                    </Styled.PriceWrapper>
+                  </Styled.TextWrapper>
+                </Styled.OneComicWrapper>
+              </SectionContainer>
+            </Styled.Background>
+            <Footer />
+          </Styled.Container>
+        </React.Fragment>
       ))}
     </>
   );
