@@ -19,7 +19,7 @@ export function Home() {
     api
       .get(`/comics?limit=10`, {
         params: {
-          offset: 400,
+          offset: 7700,
         },
       })
       .then((response) => {
