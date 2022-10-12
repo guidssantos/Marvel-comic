@@ -18,9 +18,7 @@ Por fim, realizei os testes com cypress, admito que geralmente eu utilizo o Jest
 
 Esse Projeto foi bem divertido de se realizar, aprendi bastante coisas novas com ele e fico feliz que consegui desenvolver os componentes que eu queria. Espero que gostem!!
 
-<strong>Easter Egg:</strong>
-Utilize a palavra a baixo no 'Insert Coupon' do carrinho
-neoapp
+<strong>Easter Egg:</strong>Utilize a palabra 'neoapp' no insert coupon localizado no carrinho de compras
 
 ## 💻 Como executar o Projeto
 ### Pré-requisitos
